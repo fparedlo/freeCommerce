@@ -1,5 +1,5 @@
 import type { Product } from "@/types";
-import PriceFormat from "@/utils/priceFormat";
+import priceFormat from "@/utils/priceFormat";
 import { Link } from "@tanstack/react-router";
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -17,7 +17,7 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.title}
           </h1>
           <div className="grid grid-cols-2 text-xl">
-            <p className="">{PriceFormat(product.price)}</p>
+            <p className="">{priceFormat(product.price)}</p>
             <p className="flex gap-1 items-center justify-end text-lg">
               {product.rating}
               <img

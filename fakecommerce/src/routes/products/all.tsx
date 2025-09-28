@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import getAllProducts from "@/utils/getAllProducts";
 import ProductCard from "@/components/ProductCard";
 import ProductSearch from "@/components/ProductSearch";
+import getProducts from "@/utils/getProducts";
+import Spinner from "@/components/Spinner";
 
 export const Route = createFileRoute("/products/all")({
   component: RouteComponent,
@@ -11,20 +12,22 @@ export const Route = createFileRoute("/products/all")({
 function RouteComponent() {
   const { isPending, error, data } = useQuery({
     queryKey: ["all-products"],
-    queryFn: getAllProducts,
+    queryFn: () => getProducts(import.meta.env.VITE_ALL_PRODUCTS),
     staleTime: 15 * 60 * 1000,
   });
-
-  if (isPending) return "Loading...";
-  if (error) return "An error has occurred: " + error.message;
 
   return (
     <>
       <ProductSearch />
+      {isPending && <Spinner />}
+      {error && (
+        <p className="text-center text-lg">
+          <span className="font-bold">An error has occurred:</span>{" "}
+          {error.message}
+        </p>
+      )}
       <ul className="flex flex-wrap gap-10 w-full group is-plp">
-        {data.map((p) => (
-          <ProductCard product={p} key={p.id} />
-        ))}
+        {data && data.map((p) => <ProductCard product={p} key={p.id} />)}
       </ul>
     </>
   );
