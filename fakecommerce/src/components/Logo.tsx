@@ -1,0 +1,25 @@
+interface LogoProps {
+  sizeInPixels?: `${number}px`;
+  borderInPixels?: `${number}px`;
+  paddingInPixels?: `${number}px`;
+}
+
+export default function Logo({
+  sizeInPixels = "28px",
+  borderInPixels = "2px",
+  paddingInPixels = "10px",
+}: LogoProps) {
+  return (
+    <div
+      className="font-roboto inline-block"
+      style={{
+        borderWidth: borderInPixels,
+        padding: paddingInPixels,
+        fontSize: sizeInPixels,
+      }}
+    >
+      <span className="font-bold">Fake</span>{" "}
+      <span className="font-light">Ecommerce</span>
+    </div>
+  );
+}
