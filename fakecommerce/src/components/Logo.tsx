@@ -11,7 +11,7 @@ export default function Logo({
 }: LogoProps) {
   return (
     <div
-      className="font-roboto inline-block"
+      className="inline-block"
       style={{
         borderWidth: borderInPixels,
         padding: paddingInPixels,

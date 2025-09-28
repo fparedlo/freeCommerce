@@ -11,10 +11,8 @@ export default function BestSellers() {
   }, []);
   return (
     <div className="mt-12">
-      <h2 className="font-roboto font-extrabold text-2xl">
-        Top 10 Rated Products:
-      </h2>
-      <ul className="flex flex-nowrap gap-10 w-full overflow-x-auto scroll-smooth pb-4">
+      <h2 className="font-extrabold text-2xl">Top 10 Products:</h2>
+      <ul className="flex flex-nowrap gap-10 w-full overflow-x-auto scroll-smooth pb-4 group is-carousel">
         {bestSellers.map((p) => (
           <ProductCard product={p} key={p.id} />
         ))}

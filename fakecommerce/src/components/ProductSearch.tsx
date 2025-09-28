@@ -1,6 +1,6 @@
 export default function ProductSearch() {
   return (
-    <form className="">
+    <form className="py-16">
       <label htmlFor="default-search" className="sr-only">
         Search
       </label>
@@ -9,7 +9,7 @@ export default function ProductSearch() {
           type="text"
           id="default-search"
           className="text-2xl p-4 focus:border-0 focus:outline-0 focus:no-c"
-          placeholder="Search products..."
+          placeholder="Search product..."
           required
         />
         <button type="submit" className="px-4 hover:cursor-pointer">
