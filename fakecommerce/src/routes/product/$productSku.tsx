@@ -56,13 +56,13 @@ function RouteComponent() {
               {priceFormat(productData.price)}{" "}
               <span className="font-light">
                 (
-                  <span className="line-through">
-                {priceFormat(
-                  previousPrice(
-                    productData.price,
-                    productData.discountPercentage,
-                  ),
-                )}
+                <span className="line-through">
+                  {priceFormat(
+                    previousPrice(
+                      productData.price,
+                      productData.discountPercentage,
+                    ),
+                  )}
                 </span>
                 )
               </span>

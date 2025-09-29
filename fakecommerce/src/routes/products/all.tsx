@@ -27,7 +27,9 @@ function RouteComponent() {
         </p>
       )}
       <ul className="flex flex-wrap gap-10 w-full group is-plp">
-        {data && data.map((p) => <ProductCard product={p} key={p.id} />)}
+        {data?.map((p) => (
+          <ProductCard product={p} key={p.id} />
+        ))}
       </ul>
     </>
   );

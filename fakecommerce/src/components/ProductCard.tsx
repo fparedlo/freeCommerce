@@ -14,7 +14,7 @@ export default function ProductCard({ product }: { product: Product }) {
             className="h-[252px] mx-auto"
           />
           <h1 className="text-lg font-[600] border-b-2 border-dashed py-4 mb-4">
-            {product.title}
+            {product.title.length > 30 ? product.title.slice(0,30) + "..." : product.title}
           </h1>
           <div className="grid grid-cols-2 text-xl">
             <p className="">{priceFormat(product.price)}</p>

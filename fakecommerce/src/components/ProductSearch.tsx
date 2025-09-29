@@ -1,6 +1,25 @@
+import { useNavigate } from "@tanstack/react-router";
+import { useRef } from "react";
+
 export default function ProductSearch() {
+  const navigate = useNavigate();
+
+  const searchTerm = useRef<HTMLInputElement>(null);
+
+  const handleSearch = (event: React.FormEvent) => {
+    event.preventDefault();
+    const searchValue = searchTerm.current?.value.trim();
+
+    if (searchValue) {
+      navigate({
+        to: "/products/search",
+        search: { q: searchValue },
+      });
+    }
+  };
+
   return (
-    <form className="py-16">
+    <form className="py-16" onSubmit={handleSearch}>
       <label htmlFor="default-search" className="sr-only">
         Search
       </label>
@@ -10,6 +29,7 @@ export default function ProductSearch() {
           id="default-search"
           className="text-2xl p-4 focus:border-0 focus:outline-0 focus:no-c"
           placeholder="Search product..."
+          ref={searchTerm}
           required
         />
         <button type="submit" className="px-4 hover:cursor-pointer">
