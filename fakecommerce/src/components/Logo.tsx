@@ -18,8 +18,8 @@ export default function Logo({
         fontSize: sizeInPixels,
       }}
     >
-      <span className="font-bold">Fake</span>{" "}
-      <span className="font-light">Ecommerce</span>
+      <span className="font-bold">Fake</span>
+      <span className="font-light">Commerce</span>
     </div>
   );
 }

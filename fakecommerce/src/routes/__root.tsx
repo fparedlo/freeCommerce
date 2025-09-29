@@ -18,7 +18,7 @@ const RootLayout = () => (
       <main className="min-h-screen">
         <Outlet />
       </main>
-      <footer>
+      <footer className="mt-16">
         <Footer />
       </footer>
       <TanStackRouterDevtools />

@@ -19,6 +19,7 @@ function RouteComponent() {
   return (
     <>
       <ProductSearch />
+      <h1 className="font-extrabold text-2xl">All Products:</h1>
       {isPending && <Spinner />}
       {error && (
         <p className="text-center text-lg">

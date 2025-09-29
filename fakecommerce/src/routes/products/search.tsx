@@ -1,23 +1,22 @@
-import ProductCard from '@/components/ProductCard';
-import ProductSearch from '@/components/ProductSearch';
-import Spinner from '@/components/Spinner';
-import getProducts from '@/utils/getProducts';
-import { useQuery } from '@tanstack/react-query';
-import { createFileRoute } from '@tanstack/react-router'
+import ProductCard from "@/components/ProductCard";
+import ProductSearch from "@/components/ProductSearch";
+import Spinner from "@/components/Spinner";
+import getProducts from "@/utils/getProducts";
+import { useQuery } from "@tanstack/react-query";
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/products/search')({
+export const Route = createFileRoute("/products/search")({
   component: RouteComponent,
-})
+});
 
 // TODO: add Validation is Zod or Valibot
 
 interface searchParams {
-  q: string
+  q: string;
 }
 
 function RouteComponent() {
-
-  const search : searchParams = Route.useSearch()
+  const search: searchParams = Route.useSearch();
 
   const { isPending, error, data } = useQuery({
     queryKey: ["search-products", search.q],
