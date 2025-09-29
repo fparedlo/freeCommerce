@@ -41,7 +41,7 @@ function RouteComponent() {
                 src={img}
                 key={i}
                 alt=""
-                loading="lazy"
+                fetchPriority="high"
                 className="w-full inline-block"
               />
             ))}
