@@ -5,6 +5,8 @@ import priceFormat from "@/utils/priceFormat";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
+import type { BasketItem } from "@/types";
+import { useBasketStore } from "@/store/store";
 
 export const Route = createFileRoute("/product/$productSku")({
   component: RouteComponent,
@@ -12,6 +14,7 @@ export const Route = createFileRoute("/product/$productSku")({
 
 function RouteComponent() {
   const { productSku } = Route.useParams();
+  const addItem = useBasketStore((state) => state.addItem);
 
   const { isPending, error, data } = useQuery({
     queryKey: ["all-products"],
@@ -23,6 +26,20 @@ function RouteComponent() {
     () => data?.find((p) => p.sku === productSku),
     [data, productSku],
   );
+
+  const addToBasket = (formData: FormData) => {
+    const rawProductData = formData.get("product");
+    const productData = JSON.parse(rawProductData as string);
+    const { sku, title, thumbnail, price } = productData;
+    const data: BasketItem = {
+      sku,
+      title,
+      thumbnail,
+      price,
+      quantity: 1,
+    };
+    addItem(data);
+  };
 
   return (
     <section className="mt-16">
@@ -67,6 +84,24 @@ function RouteComponent() {
                 )
               </span>
             </p>
+            <form action={addToBasket}>
+              <input
+                type="hidden"
+                name="product"
+                value={JSON.stringify({
+                  sku: productData.sku,
+                  title: productData.title,
+                  thumbnail: productData.thumbnail,
+                  price: productData.price,
+                })}
+              />
+              <button
+                className=" mt-4 uppercase cursor-pointer bg-black text-white text-2xl py-4 px-6 block w-full hover:bg-neutral-800"
+                type="submit"
+              >
+                Add to Basket
+              </button>
+            </form>
           </div>
         </div>
       )}
