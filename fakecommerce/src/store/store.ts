@@ -3,8 +3,10 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 type basketStore = {
-  basket: Set<BasketItem>;
+  basket: BasketItem[];
   addItem: (item: BasketItem) => void;
+  removeItem: (item: BasketItem) => void;
+  totalCost: () => number;
 };
 
 // TODO: do not use new Set, add quantity value, find element and do a +1
@@ -12,9 +14,21 @@ type basketStore = {
 export const useBasketStore = create<basketStore>()(
   persist(
     (set, get) => ({
-      basket: new Set<BasketItem>(),
+      basket: [],
       addItem: (item: BasketItem) =>
-        set({ basket: new Set([...get().basket, item]) }),
+        set({
+          basket: [...(get().basket || []), item],
+        }),
+      removeItem: (item: BasketItem) => {
+        const oldBasket = get().basket || [];
+        const updatedBasket = oldBasket.filter((elem) => elem.sku !== item.sku);
+        set({
+          basket: updatedBasket,
+        });
+      },
+      totalCost: () => {
+        return (get().basket || []).reduce((acc, item) => acc + item.price, 0);
+      },
     }),
     {
       name: "basket-storage",

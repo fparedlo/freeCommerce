@@ -14,7 +14,7 @@ export const Route = createFileRoute("/product/$productSku")({
 
 function RouteComponent() {
   const { productSku } = Route.useParams();
-  const addItem = useBasketStore((state) => state.addItem);
+  const { addItem } = useBasketStore();
 
   const { isPending, error, data } = useQuery({
     queryKey: ["all-products"],
@@ -63,7 +63,7 @@ function RouteComponent() {
               />
             ))}
           </div>
-          <div className="pt-8 lg:pt-0 lg:border-l-2 pl-10 border-dashed">
+          <div className="lg:border-l-2 md:pt-10 md:pl-10 border-dashed">
             <h1 className="text-3xl font-bold">{productData.title}</h1>
             <h2 className="bg-black text-white inline-block px-2">
               {productData.brand}
