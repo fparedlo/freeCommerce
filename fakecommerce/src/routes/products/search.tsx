@@ -39,6 +39,12 @@ function RouteComponent() {
           <ProductCard product={p} key={p.id} />
         ))}
       </ul>
+      {data?.length === 0 && (
+        <p className="text-center text-lg">
+          <span className="font-bold">Not products found for this search:</span>{" "}
+          {search.q}
+        </p>
+      )}
     </>
   );
 }

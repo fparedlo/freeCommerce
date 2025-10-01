@@ -15,7 +15,7 @@ const RootLayout = () => (
         <Link to="/">
           <Logo />
         </Link>
-        <Basket/>
+        <Basket />
       </header>
       <main className="min-h-screen">
         <Outlet />
