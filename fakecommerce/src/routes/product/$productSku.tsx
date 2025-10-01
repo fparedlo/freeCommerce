@@ -36,7 +36,7 @@ function RouteComponent() {
       title,
       thumbnail,
       price,
-      quantity: 1,
+      transitionId: crypto.randomUUID(),
     };
     addItem(data);
   };

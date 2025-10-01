@@ -55,5 +55,5 @@ export interface BasketItem {
   title: string;
   thumbnail: string;
   price: number;
-  quantity: number;
+  transitionId: string;
 }

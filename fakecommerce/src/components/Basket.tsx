@@ -12,7 +12,7 @@ export default function Basket () {
             {basket.length > 0 ? (
                 <div className="flex items-center gap-3">
                     <div>
-                    <p className="text-md font-light text-right">{basket.length} items</p>
+                    <p className="text-md font-light text-right">{basket.length} {basket.length === 1 ? "item" : "items" }</p>
                     <p className="text-lg text-right">{priceFormat(totalCost())}</p>
                     </div>
                     <img src="/basket.svg" width="60" height="60"/>

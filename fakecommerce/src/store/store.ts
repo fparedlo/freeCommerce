@@ -9,8 +9,6 @@ type basketStore = {
   totalCost: () => number;
 };
 
-// TODO: do not use new Set, add quantity value, find element and do a +1
-// TODO create a remove item function and decide logic
 export const useBasketStore = create<basketStore>()(
   persist(
     (set, get) => ({
