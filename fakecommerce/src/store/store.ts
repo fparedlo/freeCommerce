@@ -19,7 +19,9 @@ export const useBasketStore = create<basketStore>()(
         }),
       removeItem: (item: BasketItem) => {
         const oldBasket = get().basket || [];
-        const updatedBasket = oldBasket.filter((elem) => elem.sku !== item.sku);
+        const updatedBasket = oldBasket.filter(
+          (elem) => elem.transitionId !== item.transitionId,
+        );
         set({
           basket: updatedBasket,
         });

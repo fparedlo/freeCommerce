@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as BasketRouteImport } from './routes/basket'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsSearchRouteImport } from './routes/products/search'
@@ -16,6 +17,11 @@ import { Route as ProductsAllRouteImport } from './routes/products/all'
 import { Route as ProductsCategoryRouteImport } from './routes/products/$category'
 import { Route as ProductProductSkuRouteImport } from './routes/product/$productSku'
 
+const BasketRoute = BasketRouteImport.update({
+  id: '/basket',
+  path: '/basket',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -50,6 +56,7 @@ const ProductProductSkuRoute = ProductProductSkuRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/basket': typeof BasketRoute
   '/product/$productSku': typeof ProductProductSkuRoute
   '/products/$category': typeof ProductsCategoryRoute
   '/products/all': typeof ProductsAllRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/basket': typeof BasketRoute
   '/product/$productSku': typeof ProductProductSkuRoute
   '/products/$category': typeof ProductsCategoryRoute
   '/products/all': typeof ProductsAllRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/basket': typeof BasketRoute
   '/product/$productSku': typeof ProductProductSkuRoute
   '/products/$category': typeof ProductsCategoryRoute
   '/products/all': typeof ProductsAllRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/basket'
     | '/product/$productSku'
     | '/products/$category'
     | '/products/all'
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/basket'
     | '/product/$productSku'
     | '/products/$category'
     | '/products/all'
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/basket'
     | '/product/$productSku'
     | '/products/$category'
     | '/products/all'
@@ -102,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BasketRoute: typeof BasketRoute
   ProductProductSkuRoute: typeof ProductProductSkuRoute
   ProductsCategoryRoute: typeof ProductsCategoryRoute
   ProductsAllRoute: typeof ProductsAllRoute
@@ -110,6 +123,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/basket': {
+      id: '/basket'
+      path: '/basket'
+      fullPath: '/basket'
+      preLoaderRoute: typeof BasketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -158,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BasketRoute: BasketRoute,
   ProductProductSkuRoute: ProductProductSkuRoute,
   ProductsCategoryRoute: ProductsCategoryRoute,
   ProductsAllRoute: ProductsAllRoute,

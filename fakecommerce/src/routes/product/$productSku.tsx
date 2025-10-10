@@ -43,7 +43,7 @@ function RouteComponent() {
 
   const rating = (r: number) => {
     return "⭐".repeat(r);
-  }
+  };
 
   return (
     <section className="mt-16">
@@ -100,7 +100,7 @@ function RouteComponent() {
                 })}
               />
               <button
-                className=" mt-4 uppercase cursor-pointer bg-black text-white text-2xl py-4 px-6 block w-full hover:bg-neutral-800"
+                className="mt-4 uppercase cursor-pointer bg-black text-white text-2xl py-4 px-6 block w-full hover:bg-neutral-800"
                 type="submit"
               >
                 Add to Basket
@@ -112,7 +112,9 @@ function RouteComponent() {
                 key={review.reviewerEmail}
                 className="mt-6 border-t pt-4"
               >
-                <header className="">{review.reviewerName} - {rating(review.rating)}</header>
+                <header className="">
+                  {review.reviewerName} - {rating(review.rating)}
+                </header>
                 <p className="mt-4 italic text-2xl font-light">
                   {review.comment}
                 </p>

@@ -1,5 +1,6 @@
 import { useBasketStore } from "@/store/store";
 import priceFormat from "@/utils/priceFormat";
+import { Link } from "@tanstack/react-router";
 
 export default function Basket() {
   const { basket, totalCost } = useBasketStore();
@@ -14,10 +15,12 @@ export default function Basket() {
             </p>
             <p className="text-lg text-right">{priceFormat(totalCost())}</p>
           </div>
-          <img src="/basket.svg" width="60" height="60" />
+          <Link to="/basket" aria-label="Basket">
+            <img src="/basket.svg" width="60" height="60" alt="" />
+          </Link>
         </div>
       ) : (
-        <img src="/empty-basket.svg" width="60" height="60" />
+        <img src="/empty-basket.svg" width="60" height="60" alt="" />
       )}
     </div>
   );
