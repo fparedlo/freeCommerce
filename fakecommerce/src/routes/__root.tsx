@@ -12,9 +12,11 @@ const RootLayout = () => (
   <QueryClientProvider client={queryClient}>
     <div className="container mx-auto mt-6 px-4 2xl:px-0 font-roboto">
       <header className="grid grid-cols-[1fr_auto] items-center">
-        <Link to="/">
+        <div>
+          <Link to="/">
           <Logo />
         </Link>
+        </div>
         <Basket />
       </header>
       <main className="min-h-screen">

@@ -4,3 +4,8 @@
 @theme {
   --font-roboto: "Roboto", sans-serif;
 }
+
+*:focus {
+  outline: 4px solid black;
+  outline-offset: 4px;
+}
