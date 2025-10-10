@@ -41,6 +41,10 @@ function RouteComponent() {
     addItem(data);
   };
 
+  const rating = (r: number) => {
+    return "⭐".repeat(r);
+  }
+
   return (
     <section className="mt-16">
       {isPending && <Spinner />}
@@ -102,6 +106,18 @@ function RouteComponent() {
                 Add to Basket
               </button>
             </form>
+            <h2 className="mt-8 font-bold text-xl">Reviews:</h2>
+            {productData.reviews.map((review) => (
+              <article
+                key={review.reviewerEmail}
+                className="mt-6 border-t pt-4"
+              >
+                <header className="">{review.reviewerName} - {rating(review.rating)}</header>
+                <p className="mt-4 italic text-2xl font-light">
+                  {review.comment}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       )}
