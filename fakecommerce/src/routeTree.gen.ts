@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OrderConfirmationRouteImport } from './routes/order-confirmation'
 import { Route as MyAccountRouteImport } from './routes/my-account'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as CreateAccountRouteImport } from './routes/create-account'
@@ -21,6 +22,11 @@ import { Route as ProductsAllRouteImport } from './routes/products/all'
 import { Route as ProductsCategoryRouteImport } from './routes/products/$category'
 import { Route as ProductProductSkuRouteImport } from './routes/product/$productSku'
 
+const OrderConfirmationRoute = OrderConfirmationRouteImport.update({
+  id: '/order-confirmation',
+  path: '/order-confirmation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MyAccountRoute = MyAccountRouteImport.update({
   id: '/my-account',
   path: '/my-account',
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/create-account': typeof CreateAccountRoute
   '/login': typeof LoginRoute
   '/my-account': typeof MyAccountRoute
+  '/order-confirmation': typeof OrderConfirmationRoute
   '/product/$productSku': typeof ProductProductSkuRoute
   '/products/$category': typeof ProductsCategoryRoute
   '/products/all': typeof ProductsAllRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/create-account': typeof CreateAccountRoute
   '/login': typeof LoginRoute
   '/my-account': typeof MyAccountRoute
+  '/order-confirmation': typeof OrderConfirmationRoute
   '/product/$productSku': typeof ProductProductSkuRoute
   '/products/$category': typeof ProductsCategoryRoute
   '/products/all': typeof ProductsAllRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/create-account': typeof CreateAccountRoute
   '/login': typeof LoginRoute
   '/my-account': typeof MyAccountRoute
+  '/order-confirmation': typeof OrderConfirmationRoute
   '/product/$productSku': typeof ProductProductSkuRoute
   '/products/$category': typeof ProductsCategoryRoute
   '/products/all': typeof ProductsAllRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/create-account'
     | '/login'
     | '/my-account'
+    | '/order-confirmation'
     | '/product/$productSku'
     | '/products/$category'
     | '/products/all'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/create-account'
     | '/login'
     | '/my-account'
+    | '/order-confirmation'
     | '/product/$productSku'
     | '/products/$category'
     | '/products/all'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/create-account'
     | '/login'
     | '/my-account'
+    | '/order-confirmation'
     | '/product/$productSku'
     | '/products/$category'
     | '/products/all'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   CreateAccountRoute: typeof CreateAccountRoute
   LoginRoute: typeof LoginRoute
   MyAccountRoute: typeof MyAccountRoute
+  OrderConfirmationRoute: typeof OrderConfirmationRoute
   ProductProductSkuRoute: typeof ProductProductSkuRoute
   ProductsCategoryRoute: typeof ProductsCategoryRoute
   ProductsAllRoute: typeof ProductsAllRoute
@@ -175,6 +188,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/order-confirmation': {
+      id: '/order-confirmation'
+      path: '/order-confirmation'
+      fullPath: '/order-confirmation'
+      preLoaderRoute: typeof OrderConfirmationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/my-account': {
       id: '/my-account'
       path: '/my-account'
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   CreateAccountRoute: CreateAccountRoute,
   LoginRoute: LoginRoute,
   MyAccountRoute: MyAccountRoute,
+  OrderConfirmationRoute: OrderConfirmationRoute,
   ProductProductSkuRoute: ProductProductSkuRoute,
   ProductsCategoryRoute: ProductsCategoryRoute,
   ProductsAllRoute: ProductsAllRoute,
