@@ -1,6 +1,6 @@
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/ui/components/ProductCard";
 import { useQuery } from "@tanstack/react-query";
-import getProducts from "@/utils/getProducts";
+import getProducts from "@/api/getProducts";
 import Spinner from "./Spinner";
 
 export default function BestSellers() {

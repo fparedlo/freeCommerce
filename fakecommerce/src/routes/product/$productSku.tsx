@@ -1,12 +1,12 @@
-import Spinner from "@/components/Spinner";
-import getProducts from "@/utils/getProducts";
+import Spinner from "@/ui/components/Spinner";
+import getProducts from "@/api/getProducts";
 import previousPrice from "@/utils/previousPrice";
 import priceFormat from "@/utils/priceFormat";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import type { BasketItem } from "@/types";
-import { useBasketStore } from "@/store/store";
+import { useBasketStore } from "@/stores/basketStore";
 
 export const Route = createFileRoute("/product/$productSku")({
   component: RouteComponent,

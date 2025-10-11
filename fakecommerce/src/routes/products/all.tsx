@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import ProductCard from "@/components/ProductCard";
-import ProductSearch from "@/components/ProductSearch";
-import getProducts from "@/utils/getProducts";
-import Spinner from "@/components/Spinner";
+import ProductCard from "@/ui/components/ProductCard";
+import ProductSearch from "@/ui/components/ProductSearch";
+import getProducts from "@/api/getProducts";
+import Spinner from "@/ui/components/Spinner";
 
 export const Route = createFileRoute("/products/all")({
   component: RouteComponent,

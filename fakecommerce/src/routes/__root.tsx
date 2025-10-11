@@ -2,21 +2,24 @@ import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import Logo from "@/components/Logo";
-import Footer from "@/components/Footer";
-import Basket from "@/components/Basket";
+import Logo from "@/ui/components/Logo";
+import Footer from "@/ui/components/Footer";
+import Basket from "@/ui/components/Basket";
+import Login from "@/ui/components/Login";
 
 const queryClient = new QueryClient({});
 
 const RootLayout = () => (
   <QueryClientProvider client={queryClient}>
     <div className="container mx-auto mt-6 px-4 2xl:px-0 font-roboto">
-      <header className="grid grid-cols-[1fr_auto] items-center">
+      {/* TODO: sort view in small screens */}
+      <header className="grid grid-cols-[1fr_auto_auto] items-center">
         <div>
           <Link to="/">
-          <Logo />
-        </Link>
+            <Logo />
+          </Link>
         </div>
+        <Login />
         <Basket />
       </header>
       <main className="min-h-screen">
