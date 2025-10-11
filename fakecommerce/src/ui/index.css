@@ -5,7 +5,12 @@
   --font-roboto: "Roboto", sans-serif;
 }
 
-/* *:focus-visible  {
+*:focus-visible  {
   outline: 4px solid black;
   outline-offset: 4px;
-} */
+}
+
+
+*:focus:not(:focus-visible) {
+  outline: none; 
+} 
