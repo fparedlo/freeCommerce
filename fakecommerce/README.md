@@ -54,6 +54,7 @@ A modern e-commerce application built with React, TypeScript, and Vite, using Du
 - **ESLint** - Code linting
 - **Prettier** - Code formatting
 - **TypeScript ESLint** - TypeScript-specific linting
+- **Vitest** - Unit testing framework
 - **pnpm** - Package manager
 
 ## 📁 Project Structure
@@ -85,7 +86,7 @@ src/
 
 ### Testing
 
-- **Unit tests** for utils and stores (because math should work)
+- **Unit tests** for utils and API functions with Vitest ✅
 - **Component tests** for UI components (buttons need to button)
 - **Integration tests** for routes and API calls
 - **E2E tests** for critical user flows
@@ -118,6 +119,9 @@ pnpm lint
 
 # Format code
 pnpm format
+
+# Run tests
+pnpm test
 ```
 
 ## 🌐 API Integration
