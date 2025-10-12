@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
 import type { BasketItem } from "@/types";
-import { useBasketStore } from "@/stores/basketStore";
+import { useBasketStore } from "@/stores/basket";
 
 export const Route = createFileRoute("/product/$productSku")({
   component: RouteComponent,

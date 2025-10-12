@@ -9,57 +9,30 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as OrderConfirmationRouteImport } from './routes/order-confirmation'
-import { Route as MyAccountRouteImport } from './routes/my-account'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as CreateAccountRouteImport } from './routes/create-account'
-import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as BasketRouteImport } from './routes/basket'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CheckoutIndexRouteImport } from './routes/checkout/index'
 import { Route as ProductsSearchRouteImport } from './routes/products/search'
 import { Route as ProductsAllRouteImport } from './routes/products/all'
 import { Route as ProductsCategoryRouteImport } from './routes/products/$category'
 import { Route as ProductProductSkuRouteImport } from './routes/product/$productSku'
+import { Route as CheckoutOrderConfirmationRouteImport } from './routes/checkout/order-confirmation'
+import { Route as AuthMyAccountRouteImport } from './routes/auth/my-account'
+import { Route as AuthLoginRouteImport } from './routes/auth/login'
 
-const OrderConfirmationRoute = OrderConfirmationRouteImport.update({
-  id: '/order-confirmation',
-  path: '/order-confirmation',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MyAccountRoute = MyAccountRouteImport.update({
-  id: '/my-account',
-  path: '/my-account',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CreateAccountRoute = CreateAccountRouteImport.update({
-  id: '/create-account',
-  path: '/create-account',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CheckoutRoute = CheckoutRouteImport.update({
-  id: '/checkout',
-  path: '/checkout',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BasketRoute = BasketRouteImport.update({
   id: '/basket',
   path: '/basket',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutIndexRoute = CheckoutIndexRouteImport.update({
+  id: '/checkout/',
+  path: '/checkout/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsSearchRoute = ProductsSearchRouteImport.update({
@@ -82,147 +55,114 @@ const ProductProductSkuRoute = ProductProductSkuRouteImport.update({
   path: '/product/$productSku',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckoutOrderConfirmationRoute =
+  CheckoutOrderConfirmationRouteImport.update({
+    id: '/checkout/order-confirmation',
+    path: '/checkout/order-confirmation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthMyAccountRoute = AuthMyAccountRouteImport.update({
+  id: '/auth/my-account',
+  path: '/auth/my-account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/basket': typeof BasketRoute
-  '/checkout': typeof CheckoutRoute
-  '/create-account': typeof CreateAccountRoute
-  '/login': typeof LoginRoute
-  '/my-account': typeof MyAccountRoute
-  '/order-confirmation': typeof OrderConfirmationRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/my-account': typeof AuthMyAccountRoute
+  '/checkout/order-confirmation': typeof CheckoutOrderConfirmationRoute
   '/product/$productSku': typeof ProductProductSkuRoute
   '/products/$category': typeof ProductsCategoryRoute
   '/products/all': typeof ProductsAllRoute
   '/products/search': typeof ProductsSearchRoute
+  '/checkout': typeof CheckoutIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/basket': typeof BasketRoute
-  '/checkout': typeof CheckoutRoute
-  '/create-account': typeof CreateAccountRoute
-  '/login': typeof LoginRoute
-  '/my-account': typeof MyAccountRoute
-  '/order-confirmation': typeof OrderConfirmationRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/my-account': typeof AuthMyAccountRoute
+  '/checkout/order-confirmation': typeof CheckoutOrderConfirmationRoute
   '/product/$productSku': typeof ProductProductSkuRoute
   '/products/$category': typeof ProductsCategoryRoute
   '/products/all': typeof ProductsAllRoute
   '/products/search': typeof ProductsSearchRoute
+  '/checkout': typeof CheckoutIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/basket': typeof BasketRoute
-  '/checkout': typeof CheckoutRoute
-  '/create-account': typeof CreateAccountRoute
-  '/login': typeof LoginRoute
-  '/my-account': typeof MyAccountRoute
-  '/order-confirmation': typeof OrderConfirmationRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/auth/my-account': typeof AuthMyAccountRoute
+  '/checkout/order-confirmation': typeof CheckoutOrderConfirmationRoute
   '/product/$productSku': typeof ProductProductSkuRoute
   '/products/$category': typeof ProductsCategoryRoute
   '/products/all': typeof ProductsAllRoute
   '/products/search': typeof ProductsSearchRoute
+  '/checkout/': typeof CheckoutIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
     | '/basket'
-    | '/checkout'
-    | '/create-account'
-    | '/login'
-    | '/my-account'
-    | '/order-confirmation'
+    | '/auth/login'
+    | '/auth/my-account'
+    | '/checkout/order-confirmation'
     | '/product/$productSku'
     | '/products/$category'
     | '/products/all'
     | '/products/search'
+    | '/checkout'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
     | '/basket'
-    | '/checkout'
-    | '/create-account'
-    | '/login'
-    | '/my-account'
-    | '/order-confirmation'
+    | '/auth/login'
+    | '/auth/my-account'
+    | '/checkout/order-confirmation'
     | '/product/$productSku'
     | '/products/$category'
     | '/products/all'
     | '/products/search'
+    | '/checkout'
   id:
     | '__root__'
     | '/'
-    | '/about'
     | '/basket'
-    | '/checkout'
-    | '/create-account'
-    | '/login'
-    | '/my-account'
-    | '/order-confirmation'
+    | '/auth/login'
+    | '/auth/my-account'
+    | '/checkout/order-confirmation'
     | '/product/$productSku'
     | '/products/$category'
     | '/products/all'
     | '/products/search'
+    | '/checkout/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
   BasketRoute: typeof BasketRoute
-  CheckoutRoute: typeof CheckoutRoute
-  CreateAccountRoute: typeof CreateAccountRoute
-  LoginRoute: typeof LoginRoute
-  MyAccountRoute: typeof MyAccountRoute
-  OrderConfirmationRoute: typeof OrderConfirmationRoute
+  AuthLoginRoute: typeof AuthLoginRoute
+  AuthMyAccountRoute: typeof AuthMyAccountRoute
+  CheckoutOrderConfirmationRoute: typeof CheckoutOrderConfirmationRoute
   ProductProductSkuRoute: typeof ProductProductSkuRoute
   ProductsCategoryRoute: typeof ProductsCategoryRoute
   ProductsAllRoute: typeof ProductsAllRoute
   ProductsSearchRoute: typeof ProductsSearchRoute
+  CheckoutIndexRoute: typeof CheckoutIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/order-confirmation': {
-      id: '/order-confirmation'
-      path: '/order-confirmation'
-      fullPath: '/order-confirmation'
-      preLoaderRoute: typeof OrderConfirmationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/my-account': {
-      id: '/my-account'
-      path: '/my-account'
-      fullPath: '/my-account'
-      preLoaderRoute: typeof MyAccountRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/create-account': {
-      id: '/create-account'
-      path: '/create-account'
-      fullPath: '/create-account'
-      preLoaderRoute: typeof CreateAccountRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/checkout': {
-      id: '/checkout'
-      path: '/checkout'
-      fullPath: '/checkout'
-      preLoaderRoute: typeof CheckoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/basket': {
       id: '/basket'
       path: '/basket'
@@ -230,18 +170,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BasketRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout/': {
+      id: '/checkout/'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products/search': {
@@ -272,22 +212,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductProductSkuRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checkout/order-confirmation': {
+      id: '/checkout/order-confirmation'
+      path: '/checkout/order-confirmation'
+      fullPath: '/checkout/order-confirmation'
+      preLoaderRoute: typeof CheckoutOrderConfirmationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/my-account': {
+      id: '/auth/my-account'
+      path: '/auth/my-account'
+      fullPath: '/auth/my-account'
+      preLoaderRoute: typeof AuthMyAccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
   BasketRoute: BasketRoute,
-  CheckoutRoute: CheckoutRoute,
-  CreateAccountRoute: CreateAccountRoute,
-  LoginRoute: LoginRoute,
-  MyAccountRoute: MyAccountRoute,
-  OrderConfirmationRoute: OrderConfirmationRoute,
+  AuthLoginRoute: AuthLoginRoute,
+  AuthMyAccountRoute: AuthMyAccountRoute,
+  CheckoutOrderConfirmationRoute: CheckoutOrderConfirmationRoute,
   ProductProductSkuRoute: ProductProductSkuRoute,
   ProductsCategoryRoute: ProductsCategoryRoute,
   ProductsAllRoute: ProductsAllRoute,
   ProductsSearchRoute: ProductsSearchRoute,
+  CheckoutIndexRoute: CheckoutIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
