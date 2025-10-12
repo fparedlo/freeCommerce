@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import userLogin from "@/api/auth/userLogin";
+import { Button } from "@/ui/components";
 export const Route = createFileRoute("/auth/login")({
   component: RouteComponent,
 });
@@ -39,12 +40,7 @@ function RouteComponent() {
             required
           />
         </label>
-        <button
-          type="submit"
-          className="uppercase cursor-pointer bg-black text-white text-2xl py-4 px-6 block w-full hover:bg-neutral-800"
-        >
-          Login
-        </button>
+        <Button type="submit" text="Login" />
       </form>
     </section>
   );

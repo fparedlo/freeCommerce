@@ -1,5 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BestSellers, ProductSearch, Spinner } from "@/ui/components";
+import {
+  BestSellers,
+  LinkButton,
+  ProductSearch,
+  Spinner,
+} from "@/ui/components";
 import { getCategories } from "@/api/products";
 import { useQuery } from "@tanstack/react-query";
 
@@ -17,12 +22,7 @@ function Index() {
   return (
     <>
       <ProductSearch />
-      <Link
-        to="/products/all"
-        className="text-white bg-black uppercase block text-center text-2xl py-4"
-      >
-        Show me all
-      </Link>
+      <LinkButton url="/product/all" text="Show me all" />
       <BestSellers />
       <h2 className="font-extrabold text-2xl mt-16">Categories:</h2>
       {isPending && <Spinner />}

@@ -1,4 +1,4 @@
-import { Spinner } from "@/ui/components";
+import { Button, Spinner } from "@/ui/components";
 import { getProducts } from "@/api/products";
 import previousPrice from "@/utils/previousPrice";
 import priceFormat from "@/utils/priceFormat";
@@ -99,12 +99,7 @@ function RouteComponent() {
                   price: productData.price,
                 })}
               />
-              <button
-                className="mt-4 uppercase cursor-pointer bg-black text-white text-2xl py-4 px-6 block w-full hover:bg-neutral-800"
-                type="submit"
-              >
-                Add to Basket
-              </button>
+              <Button type="submit" text="Add to Basket" extraClasses="mt-4" />
             </form>
             <h2 className="mt-8 font-bold text-xl">Reviews:</h2>
             {productData.reviews.map((review) => (

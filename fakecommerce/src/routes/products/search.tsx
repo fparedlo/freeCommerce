@@ -1,4 +1,4 @@
-import {ProductCard, ProductSearch, Spinner} from "@/ui/components"
+import { ProductCard, ProductSearch, Spinner } from "@/ui/components";
 import { getProducts } from "@/api/products";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
