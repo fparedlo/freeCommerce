@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import BestSellers from "@/ui/components/TopProducts";
 import ProductSearch from "@/ui/components/ProductSearch";
-import getCategories from "@/api/getCategories";
+import getCategories from "@/api/products/getCategories";
 import Spinner from "@/ui/components/Spinner";
 import { useQuery } from "@tanstack/react-query";
 

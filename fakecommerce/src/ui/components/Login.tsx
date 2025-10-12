@@ -6,7 +6,7 @@ export default function Login() {
       <div>
         <p className="text-md font-light text-right">Ferran</p>
       </div>
-      <Link to="/basket" aria-label="Basket">
+      <Link to="/login" aria-label="login">
         <span className="material-symbols-outlined text-6xl!">person</span>
       </Link>
     </div>
