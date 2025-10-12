@@ -1,4 +1,4 @@
-export default function Spinner() {
+export function Spinner() {
   return (
     <div className="text-center">
       <div role="status">

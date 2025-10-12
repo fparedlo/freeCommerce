@@ -1,9 +1,8 @@
-import ProductCard from "@/ui/components/ProductCard";
 import { useQuery } from "@tanstack/react-query";
-import getProducts from "@/api/products/getProducts";
-import Spinner from "./Spinner";
+import { getProducts } from "@/api/products";
+import { ProductCard, Spinner } from "@/ui/components";
 
-export default function BestSellers() {
+export function BestSellers() {
   const { isPending, error, data } = useQuery({
     queryKey: ["top-products"],
     queryFn: () => getProducts(import.meta.env.VITE_TOP_PRODUCTS),

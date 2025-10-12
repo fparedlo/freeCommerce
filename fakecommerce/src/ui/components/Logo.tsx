@@ -4,7 +4,7 @@ interface LogoProps {
   paddingInPixels?: `${number}px`;
 }
 
-export default function Logo({
+export function Logo({
   sizeInPixels = "28px",
   borderInPixels = "2px",
   paddingInPixels = "10px",

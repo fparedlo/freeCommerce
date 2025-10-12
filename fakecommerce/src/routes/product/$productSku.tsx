@@ -1,5 +1,5 @@
-import Spinner from "@/ui/components/Spinner";
-import getProducts from "@/api/products/getProducts";
+import { Spinner } from "@/ui/components";
+import { getProducts } from "@/api/products";
 import previousPrice from "@/utils/previousPrice";
 import priceFormat from "@/utils/priceFormat";
 import { useQuery } from "@tanstack/react-query";

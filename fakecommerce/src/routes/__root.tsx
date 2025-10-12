@@ -2,10 +2,7 @@ import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import Logo from "@/ui/components/Logo";
-import Footer from "@/ui/components/Footer";
-import Basket from "@/ui/components/Basket";
-import Login from "@/ui/components/Login";
+import { Logo, Footer, Basket, Login } from "@/ui/components";
 
 const queryClient = new QueryClient({});
 

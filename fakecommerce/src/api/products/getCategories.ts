@@ -1,6 +1,6 @@
 import type { Category } from "@/types";
 
-export default async function getCategories(URL: string): Promise<Category[]> {
+export async function getCategories(URL: string): Promise<Category[]> {
   try {
     const response = await fetch(URL);
     if (!response.ok) {

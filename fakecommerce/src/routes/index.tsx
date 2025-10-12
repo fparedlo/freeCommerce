@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import BestSellers from "@/ui/components/TopProducts";
-import ProductSearch from "@/ui/components/ProductSearch";
-import getCategories from "@/api/products/getCategories";
-import Spinner from "@/ui/components/Spinner";
+import { BestSellers, ProductSearch, Spinner } from "@/ui/components";
+import { getCategories } from "@/api/products";
 import { useQuery } from "@tanstack/react-query";
 
 export const Route = createFileRoute("/")({

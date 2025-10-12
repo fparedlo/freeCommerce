@@ -1,7 +1,7 @@
 import { useBasketStore } from "@/stores/basket";
 import { Link } from "@tanstack/react-router";
 
-export default function Basket() {
+export function Basket() {
   const { basket } = useBasketStore();
 
   return (

@@ -2,7 +2,7 @@ import type { Product } from "@/types";
 import priceFormat from "@/utils/priceFormat";
 import { Link } from "@tanstack/react-router";
 
-export default function ProductCard({ product }: { product: Product }) {
+export function ProductCard({ product }: { product: Product }) {
   return (
     <li className="group-[.is-carousel]:flex-none group-[.is-plp]:flex-auto">
       <article className="h-[362px]">

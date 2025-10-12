@@ -1,7 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useRef } from "react";
 
-export default function ProductSearch() {
+export function ProductSearch() {
   const navigate = useNavigate();
 
   const searchTerm = useRef<HTMLInputElement>(null);
