@@ -1,73 +1,138 @@
-# React + TypeScript + Vite
+# FakeCommerce - E-commerce App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern e-commerce application built with React, TypeScript, and Vite, using DummyJSON API for product data.
 
-Currently, two official plugins are available:
+## 🚀 Features Implemented
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Core Functionality
 
-## React Compiler
+- **Product Catalog**: Browse all products with pagination
+- **Category Navigation**: Filter products by categories
+- **Product Search**: Search functionality across all products
+- **Product Details**: Individual product pages with images, reviews, and pricing
+- **Shopping Basket**: Add/remove items with persistent storage
+- **Price Display**: Formatted pricing with discount calculations
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### Routing & Navigation
 
-## Expanding the ESLint configuration
+- File-based routing with TanStack Router
+- Dynamic routes for products and categories
+- Search functionality with URL parameters
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### State Management
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+- Zustand for basket state management
+- Persistent storage using localStorage
+- React Query for server state and caching
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### UI/UX
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+- Responsive design with Tailwind CSS
+- Loading states with spinners
+- Error handling and user feedback
+- Material Symbols icons
+- Custom components library
+
+## 🔧 Tech Stack
+
+### Core Technologies
+
+- **React 19** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS 4** - Styling framework
+
+### Key Libraries
+
+- **@tanstack/react-router** - File-based routing
+- **@tanstack/react-query** - Server state management
+- **Zustand** - Client state management
+- **@vitejs/plugin-react-swc** - Fast refresh with SWC
+
+### Development Tools
+
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **TypeScript ESLint** - TypeScript-specific linting
+- **pnpm** - Package manager
+
+## 📁 Project Structure
+
+```
+src/
+├── api/           # API layer (products, auth)
+├── routes/        # File-based routes
+├── stores/        # Zustand stores
+├── types/         # TypeScript type definitions
+├── ui/            # UI components and styles
+├── utils/         # Utility functions
+└── main.tsx       # App entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚧 In Progress / TODO
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+### Authentication
 
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+- Login functionality (UI implemented, integration pending)
+- User account management
+- Protected routes
+
+### Checkout Process
+
+- Checkout flow implementation
+- Order confirmation
+- Payment integration
+
+### Enhancements
+
+- Form validation with Zod/Valibot
+- Mobile responsive improvements
+- Product filtering and sorting
+- Wishlist functionality
+
+## 🛠️ Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
+
+# Lint code
+pnpm lint
+
+# Format code
+pnpm format
+```
+
+## 🌐 API Integration
+
+The app uses DummyJSON API with a proxy configuration:
+
+- Base URL: `https://dummyjson.com/`
+- Proxy: `/api` routes are proxied to the base URL
+- Endpoints: Products, categories, search, authentication
+
+## 📱 Routes
+
+- `/` - Homepage with categories and top products
+- `/products/all` - All products listing
+- `/products/search` - Search results
+- `/products/$category` - Category-specific products
+- `/product/$productSku` - Individual product details
+- `/basket` - Shopping basket
+- `/auth/login` - User login
+- `/auth/my-account` - User profile
+- `/checkout` - Checkout process (in progress)
+- `/checkout/order-confirmation` - Final purchase page
+
+```
+
 ```
