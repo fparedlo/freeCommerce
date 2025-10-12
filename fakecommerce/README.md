@@ -83,6 +83,14 @@ src/
 - Order confirmation
 - Payment integration
 
+### Testing
+
+- **Unit tests** for utils and stores (because math should work)
+- **Component tests** for UI components (buttons need to button)
+- **Integration tests** for routes and API calls
+- **E2E tests** for critical user flows
+- *Sorry for not doing TDD! 🙈 I promise the code works... mostly... probably... please don't break it*
+
 ### Enhancements
 
 - Form validation with Zod/Valibot
