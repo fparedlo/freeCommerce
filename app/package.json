@@ -1,8 +1,9 @@
 {
-  "name": "fakecommerce",
-  "private": true,
+  "name": "freecommerce",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "pnpm lint && pnpm format && tsc -b && vite build",

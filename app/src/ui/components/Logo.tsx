@@ -18,7 +18,7 @@ export function Logo({
         fontSize: sizeInPixels,
       }}
     >
-      <span className="font-bold">Fake</span>
+      <span className="font-bold">Free</span>
       <span className="font-light">Commerce</span>
     </div>
   );
