@@ -42,7 +42,7 @@ function RouteComponent() {
               Total number of items: <b>{basket.length}</b>
             </p>
             <p>
-              Total basket value: <b>{totalCost()}</b>
+              Total basket value: <b>{priceFormat(totalCost())}</b>
             </p>
           </div>
         </>
