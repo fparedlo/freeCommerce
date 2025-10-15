@@ -22,7 +22,7 @@ function Index() {
   return (
     <>
       <ProductSearch />
-      <LinkButton url="/product/all" text="Show me all" />
+      <LinkButton url="/products/all" text="Show me all" />
       <BestSellers />
       <h2 className="font-extrabold text-2xl mt-16">Categories:</h2>
       {isPending && <Spinner />}
