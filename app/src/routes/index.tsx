@@ -4,6 +4,7 @@ import {
   LinkButton,
   ProductSearch,
   Spinner,
+  ErrorInfo,
 } from "@/ui/components";
 import { getCategories } from "@/api/products";
 import { useQuery } from "@tanstack/react-query";
@@ -26,12 +27,7 @@ function Index() {
       <BestSellers />
       <h2 className="font-extrabold text-2xl mt-16">Categories:</h2>
       {isPending && <Spinner />}
-      {error && (
-        <p className="text-center text-lg">
-          <span className="font-bold">An error has occurred:</span>{" "}
-          {error.message}
-        </p>
-      )}
+      {error && <ErrorInfo message={error.message} />}
       <nav>
         <ul className="flex flex-wrap gap-6 w-full mt-8">
           {data?.map((category, indx) => (

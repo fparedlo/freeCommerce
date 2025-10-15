@@ -8,3 +8,5 @@ export * from "./Spinner";
 export * from "./TopProducts";
 export * from "./LinkButton";
 export * from "./Button";
+export * from "./ProductsGrid";
+export * from "./ErrorInfo";

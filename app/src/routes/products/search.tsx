@@ -1,4 +1,9 @@
-import { ProductCard, ProductSearch, Spinner } from "@/ui/components";
+import {
+  ProductCard,
+  ProductSearch,
+  Spinner,
+  ErrorInfo,
+} from "@/ui/components";
 import { getProducts } from "@/api/products";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
@@ -26,12 +31,7 @@ function RouteComponent() {
     <>
       <ProductSearch />
       {isPending && <Spinner />}
-      {error && (
-        <p className="text-center text-lg">
-          <span className="font-bold">An error has occurred:</span>{" "}
-          {error.message}
-        </p>
-      )}
+      {error && <ErrorInfo message={error.message} />}
       <ul className="flex flex-wrap gap-10 w-full group is-plp">
         {data?.map((p) => (
           <ProductCard product={p} key={p.id} />

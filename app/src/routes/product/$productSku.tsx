@@ -1,4 +1,4 @@
-import { Button, Spinner } from "@/ui/components";
+import { Button, Spinner, ErrorInfo } from "@/ui/components";
 import { getProducts } from "@/api/products";
 import previousPrice from "@/utils/previousPrice";
 import priceFormat from "@/utils/priceFormat";
@@ -48,12 +48,7 @@ function RouteComponent() {
   return (
     <section className="mt-16">
       {isPending && <Spinner />}
-      {error && (
-        <p className="text-center text-lg">
-          <span className="font-bold">An error has occurred:</span>{" "}
-          {error.message}
-        </p>
-      )}
+      {error && <ErrorInfo message={error.message} />}
       {productData && (
         <div className="grid lg:grid-cols-2 gap-10">
           <div className=" overflow-x-scroll flex gap-5 pb-4">

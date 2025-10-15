@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "@/api/products";
-import { ProductCard, Spinner } from "@/ui/components";
+import { ProductCard, Spinner, ErrorInfo } from "@/ui/components";
 
 export function BestSellers() {
   const { isPending, error, data } = useQuery({
@@ -13,12 +13,7 @@ export function BestSellers() {
     <div className="mt-12">
       <h2 className="font-extrabold text-2xl">Top 10 Products:</h2>
       {isPending && <Spinner />}
-      {error && (
-        <p className="text-center text-lg">
-          <span className="font-bold">An error has occurred:</span>{" "}
-          {error.message}
-        </p>
-      )}
+      {error && <ErrorInfo message={error.message} />}
       <ul className="flex flex-nowrap gap-10 w-full overflow-x-auto scroll-smooth pb-4 group is-carousel">
         {data?.map((p) => (
           <ProductCard product={p} key={p.id} />
