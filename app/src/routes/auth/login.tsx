@@ -30,7 +30,7 @@ function RouteComponent() {
     if (data.username.length > 0 && data.password.length >= 8) {
       const loginResult = await auth(data);
 
-      if (loginResult.success) {
+      if (loginResult.success && loginResult.data?.accessToken) {
         localStorage.setItem("accessToken", loginResult.data.accessToken);
         console.log("Login successful", loginResult.data);
       } else {

@@ -59,10 +59,22 @@ export interface BasketItem {
 }
 export interface UserResult {
   success: boolean;
-  data?: undefined;
+  data?: Data;
   error?: string | unknown;
 }
 export interface UserInput {
   username: string;
   password: string;
+}
+
+export interface Data {
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  image: string;
+  accessToken: string;
+  refreshToken: string;
 }
