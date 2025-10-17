@@ -20,6 +20,7 @@ export async function auth({
     }
 
     const data = await response.json();
+    sessionStorage.setItem("accessToken", data.accessToken);
     return { success: true, data };
   } catch (error) {
     return { success: false, error };

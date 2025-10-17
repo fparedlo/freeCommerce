@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useBasketStore } from "@/stores/basket";
-import priceFormat from "@/utils/priceFormat";
+import { priceFormat } from "@/utils";
 
 export const Route = createFileRoute("/basket")({
   component: RouteComponent,

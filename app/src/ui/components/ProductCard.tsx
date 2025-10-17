@@ -1,5 +1,5 @@
 import type { Product } from "@/types";
-import priceFormat from "@/utils/priceFormat";
+import { priceFormat } from "@/utils";
 import { Link } from "@tanstack/react-router";
 
 export function ProductCard({ product }: { product: Product }) {

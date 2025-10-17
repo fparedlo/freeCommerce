@@ -1,9 +1,20 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { auth } from "@/api/auth";
+import { createFileRoute, redirect } from "@tanstack/react-router";
+import { auth, me } from "@/api/auth";
 import { Button } from "@/ui/components";
 import { useState } from "react";
+
 export const Route = createFileRoute("/auth/login")({
   component: RouteComponent,
+  beforeLoad: async () => {
+    const accessToken = sessionStorage.getItem("accessToken");
+    if (!accessToken) return;
+    const isAuth = await me(accessToken);
+    if (isAuth.success) {
+      throw redirect({
+        to: "/auth/my-account",
+      });
+    }
+  },
 });
 
 function RouteComponent() {
@@ -18,8 +29,9 @@ function RouteComponent() {
 
     if (data.username.length > 0 && data.password.length >= 8) {
       const loginResult = await auth(data);
-      
+
       if (loginResult.success) {
+        localStorage.setItem("accessToken", loginResult.data.accessToken);
         console.log("Login successful", loginResult.data);
       } else {
         setLoginIncorrect(true);

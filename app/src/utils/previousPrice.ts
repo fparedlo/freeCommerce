@@ -1,4 +1,4 @@
-export default function previousPrice(
+export function previousPrice(
   currentPrice: number,
   discountPercentage: number,
 ): number {

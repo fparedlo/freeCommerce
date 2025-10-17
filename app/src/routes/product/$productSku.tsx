@@ -1,7 +1,6 @@
 import { Button, Spinner, ErrorInfo } from "@/ui/components";
 import { getProducts } from "@/api/products";
-import previousPrice from "@/utils/previousPrice";
-import priceFormat from "@/utils/priceFormat";
+import { previousPrice, priceFormat } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
