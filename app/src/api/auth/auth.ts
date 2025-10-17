@@ -8,7 +8,7 @@ export async function auth({
     const response = await fetch(import.meta.env.VITE_AUTH, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password, expiresInMins: 30 }),
+      body: JSON.stringify({ username, password, expiresInMins: 99999 }),
       credentials: "include",
     });
 

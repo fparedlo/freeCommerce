@@ -4,7 +4,7 @@ import { getCookie } from "./";
 beforeEach(() => {
   Object.defineProperty(global, "document", {
     value: { cookie: "" },
-    writable: true
+    writable: true,
   });
 });
 
