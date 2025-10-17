@@ -21,7 +21,6 @@ function RouteComponent() {
   const [loginIncorrect, setLoginIncorrect] = useState(false);
   const navigate = useNavigate();
 
-
   const tryLogin = async (formData: FormData) => {
     setLoginIncorrect(false);
     const data = {

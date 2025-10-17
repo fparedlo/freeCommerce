@@ -7,7 +7,9 @@ export function Login() {
         <p className="text-md font-light text-right"></p>
       </div>
       <Link to="/auth/login" aria-label="login">
-        <span className="material-symbols-outlined text-4xl! md:text-6xl!">person</span>
+        <span className="material-symbols-outlined text-4xl! md:text-6xl!">
+          person
+        </span>
       </Link>
     </div>
   );
