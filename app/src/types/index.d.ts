@@ -57,3 +57,12 @@ export interface BasketItem {
   price: number;
   transitionId: string;
 }
+export interface UserResult {
+  success: boolean;
+  data?: undefined;
+  error?: string | unknown;
+}
+export interface UserInput {
+  username: string;
+  password: string;
+}

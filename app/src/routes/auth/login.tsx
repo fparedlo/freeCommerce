@@ -1,18 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
-import userLogin from "@/api/auth/login";
+import { auth } from "@/api/auth";
 import { Button } from "@/ui/components";
+import { useState } from "react";
 export const Route = createFileRoute("/auth/login")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  // const [status, setStatus] = useState<boolean|null>(null)
-  const tryLogin = (formData: FormData) => {
-    const username = formData.get("username") as string;
-    const password = formData.get("password") as string;
+  const [loginIncorrect, setLoginIncorrect] = useState(false);
 
-    if (username.length > 0 && password.length > 8) {
-      userLogin(username, password);
+  const tryLogin = async (formData: FormData) => {
+    setLoginIncorrect(false);
+    const data = {
+      username: (formData.get("username") as string) ?? "",
+      password: (formData.get("password") as string) ?? "",
+    };
+
+    if (data.username.length > 0 && data.password.length >= 8) {
+      const loginResult = await auth(data);
+      
+      if (loginResult.success) {
+        console.log("Login successful", loginResult.data);
+      } else {
+        setLoginIncorrect(true);
+      }
     }
   };
 
@@ -41,6 +52,11 @@ function RouteComponent() {
           />
         </label>
         <Button type="submit" text="Login" />
+        {loginIncorrect && (
+          <p className="text-center text-red-700">
+            The login details are incorrect, try again.
+          </p>
+        )}
       </form>
     </section>
   );
