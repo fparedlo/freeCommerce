@@ -2,11 +2,12 @@ import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { auth, me } from "@/api/auth";
 import { Button } from "@/ui/components";
 import { useState } from "react";
+import { getSessionStorageItem } from "@/utils";
 
 export const Route = createFileRoute("/auth/login")({
   component: RouteComponent,
   beforeLoad: async () => {
-    const accessToken = sessionStorage.getItem("accessToken");
+    const accessToken = getSessionStorageItem("accessToken");
     if (!accessToken) return;
     const isAuth = await me(accessToken);
     if (isAuth.success) {

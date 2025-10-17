@@ -62,11 +62,13 @@ A modern open-source e-commerce application built with React, TypeScript, and Vi
 ```
 src/
 ├── api/           # API layer (products, auth)
+│   └── auth/      # Authentication endpoints (login, me)
 ├── routes/        # File-based routes
+│   └── auth/      # Authentication routes (login, my-account)
 ├── stores/        # Zustand stores
 ├── types/         # TypeScript type definitions
 ├── ui/            # UI components and styles
-├── utils/         # Utility functions
+├── utils/         # Utility functions (cookies, etc.)
 └── main.tsx       # App entry point
 ```
 
@@ -127,11 +129,13 @@ export interface Product {
 
 ## 🚧 In Progress / TODO
 
-### Authentication
+### Authentication ✅
 
-- Login functionality (UI implemented, integration pending)
-- User account management
-- Protected routes
+- **Login functionality** - Complete with form validation and error handling
+- **User session management** - Token storage and authentication checks
+- **Protected routes** - Route guards with automatic redirects
+- **Cookie utilities** - Helper functions for cookie management
+- User account management (in progress)
 
 ### Checkout Process
 
@@ -142,6 +146,7 @@ export interface Product {
 ### Testing
 
 - **Unit tests** for utils and API functions with Vitest ✅
+- **Cookie utilities tests** - Testing browser cookie interactions ✅
 - **Component tests** for UI components (buttons need to button)
 - **Integration tests** for routes and API calls
 - **E2E tests** for critical user flows

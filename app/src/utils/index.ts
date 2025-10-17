@@ -1,3 +1,3 @@
-export * from "./cookies";
+export * from "./storage";
 export * from "./previousPrice";
 export * from "./priceFormat";
