@@ -1,4 +1,4 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 import { auth, me } from "@/api/auth";
 import { Button } from "@/ui/components";
 import { useState } from "react";
@@ -19,6 +19,8 @@ export const Route = createFileRoute("/auth/login")({
 
 function RouteComponent() {
   const [loginIncorrect, setLoginIncorrect] = useState(false);
+  const navigate = useNavigate();
+
 
   const tryLogin = async (formData: FormData) => {
     setLoginIncorrect(false);
@@ -32,7 +34,7 @@ function RouteComponent() {
 
       if (loginResult.success && loginResult.data?.accessToken) {
         localStorage.setItem("accessToken", loginResult.data.accessToken);
-        console.log("Login successful", loginResult.data);
+        navigate({ to: "/auth/my-account" });
       } else {
         setLoginIncorrect(true);
       }
@@ -48,7 +50,7 @@ function RouteComponent() {
           <input
             type="text"
             name="username"
-            className="text-2xl py-4 px-6 block w-full border-2"
+            className="mt-1.5 text-2xl py-4 px-6 block w-full border-2"
             placeholder="JohnDoe"
             required
           />
@@ -58,7 +60,7 @@ function RouteComponent() {
           <input
             type="password"
             name="password"
-            className="text-2xl py-4 px-6 block w-full border-2"
+            className="mt-1.5 text-2xl py-4 px-6 block w-full border-2"
             placeholder="********"
             required
           />
