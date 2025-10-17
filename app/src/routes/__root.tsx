@@ -8,7 +8,7 @@ const queryClient = new QueryClient({});
 
 const RootLayout = () => (
   <QueryClientProvider client={queryClient}>
-    <div className="container mx-auto mt-6 px-4 2xl:px-0 font-roboto">
+    <div className="container mx-auto mt-6 px-4 2xl:px-0 font-roboto min-w-[375px]">
       {/* TODO: sort view in small screens */}
       <header className="grid grid-cols-[1fr_auto_auto] items-center">
         <div>

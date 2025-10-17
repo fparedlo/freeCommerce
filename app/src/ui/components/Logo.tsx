@@ -1,22 +1,9 @@
-interface LogoProps {
-  sizeInPixels?: `${number}px`;
-  borderInPixels?: `${number}px`;
-  paddingInPixels?: `${number}px`;
-}
 
-export function Logo({
-  sizeInPixels = "28px",
-  borderInPixels = "2px",
-  paddingInPixels = "10px",
-}: LogoProps) {
+
+export function Logo() {
   return (
     <div
-      className="inline-block"
-      style={{
-        borderWidth: borderInPixels,
-        padding: paddingInPixels,
-        fontSize: sizeInPixels,
-      }}
+      className="inline-block text-xl md:text-3xl border-2 p-2.5"
     >
       <span className="font-bold">free</span>
       <span className="font-light">Commerce</span>
