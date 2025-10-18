@@ -131,10 +131,11 @@ export interface Product {
 
 ### Authentication ✅
 
-- **Login functionality** - Complete with form validation and error handling
-- **User session management** - HTTPOnly Token and authentication checks
-- **Protected routes** - Route guards with automatic redirects
-- **Cookie utilities** - Helper functions for cookie management
+- **Login functionality** - Complete with form validation and error handling ✅
+- **User session management** - HTTPOnly cookie authentication ✅
+- **Protected routes** - Route guards with automatic redirects ✅
+- **Logout functionality** - Server-side session invalidation ✅
+- **Error handling** - Silent handling of expected auth errors ✅
 - **User account management** - Complete profile display with user data ✅
 - **Global auth context** - Shared auth state across all routes ✅
 
@@ -223,11 +224,12 @@ The app is configured for Netlify deployment with:
 
 - **Fix Authentication Flow**
   - ✅ Update `my-account.tsx` - remove token parameter from `me()` call
-  - Implement logout functionality with proper cookie clearing
+  - ✅ Implement logout functionality with proper cookie clearing
+  - ✅ Add silent error handling for expected 401s during auth checks
 
 - **Complete Missing API Functions**
-  - Implement `logout.ts` function
-  - Add proper error handling to all API calls
+  - ✅ Implement `logout.ts` function
+  - ✅ Add proper error handling to all API calls
 
 ### 🔧 Core Functionality (Priority 2)
 
