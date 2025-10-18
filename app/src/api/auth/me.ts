@@ -1,12 +1,9 @@
 import type { UserResult } from "@/types";
 
-export async function me(token: string): Promise<UserResult> {
+export async function me(): Promise<UserResult> {
   try {
     const response = await fetch(import.meta.env.VITE_ME, {
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
       credentials: "include",
     });
 
