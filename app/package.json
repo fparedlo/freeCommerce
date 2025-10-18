@@ -1,16 +1,33 @@
 {
   "name": "freecommerce",
+  "description": "This is an open source ecommerce build on modern technologies and with startups and little businesses in mind.",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "license": "MIT",
+  "author": "Ferran Paredes (https://www.linkedin.com/in/fparedlo)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fparedlo/freeCommerce.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "react",
+    "typescript",
+    "vite",
+    "tailwind"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "pnpm lint && pnpm format && tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
     "format": "pnpm exec prettier ./src --write",
-    "test": "vitest"
+    "format:check": "prettier ./src --check",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
