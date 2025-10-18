@@ -3,6 +3,7 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Logo, Footer, Basket, Login } from "@/ui/components";
+import { me } from "@/api/auth";
 
 const queryClient = new QueryClient({});
 
@@ -31,4 +32,10 @@ const RootLayout = () => (
   </QueryClientProvider>
 );
 
-export const Route = createRootRoute({ component: RootLayout });
+export const Route = createRootRoute({
+  component: RootLayout,
+  beforeLoad: async () => {
+    const authData = await me();
+    return { authData };
+  },
+});

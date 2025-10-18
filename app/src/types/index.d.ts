@@ -57,11 +57,18 @@ export interface BasketItem {
   price: number;
   transitionId: string;
 }
-export interface UserResult {
+export interface MeResult {
+  success: boolean;
+  data?: ImportedUserData;
+  error?: string;
+}
+
+export interface LoginResult {
   success: boolean;
   data?: Data;
-  error?: string | unknown;
+  error?: string;
 }
+
 export interface UserInput {
   username: string;
   password: string;

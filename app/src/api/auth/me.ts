@@ -1,6 +1,6 @@
-import type { UserResult } from "@/types";
+import type { MeResult } from "@/types";
 
-export async function me(): Promise<UserResult> {
+export async function me(): Promise<MeResult> {
   try {
     const response = await fetch(import.meta.env.VITE_ME, {
       method: "GET",
@@ -17,6 +17,6 @@ export async function me(): Promise<UserResult> {
     const data = await response.json();
     return { success: true, data };
   } catch (error) {
-    return { success: false, error };
+    return { success: false, error: `${error}` };
   }
 }

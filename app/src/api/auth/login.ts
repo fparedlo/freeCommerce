@@ -1,9 +1,9 @@
-import type { UserInput, UserResult } from "@/types";
+import type { UserInput, LoginResult } from "@/types";
 
-export async function auth({
+export async function login({
   username,
   password,
-}: UserInput): Promise<UserResult> {
+}: UserInput): Promise<LoginResult> {
   try {
     const response = await fetch(import.meta.env.VITE_AUTH, {
       method: "POST",
@@ -22,6 +22,6 @@ export async function auth({
     const data = await response.json();
     return { success: true, data };
   } catch (error) {
-    return { success: false, error };
+    return { success: false, error: `${error}` };
   }
 }
