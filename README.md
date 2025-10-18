@@ -215,6 +215,67 @@ The app is configured for Netlify deployment with:
 - `/checkout` - Checkout process (in progress)
 - `/checkout/order-confirmation` - Final purchase page
 
+## 🗺️ Development Roadmap
+
+### 🚨 Critical Fixes (Priority 1)
+
+- **Fix Authentication Flow**
+  - Update `my-account.tsx` - remove token parameter from `me()` call
+  - Add logout functionality to clear sessionStorage
+  - Fix token storage consistency (sessionStorage vs localStorage)
+
+- **Complete Missing API Functions**
+  - Implement `logout.ts` function
+  - Add proper error handling to all API calls
+
+### 🔧 Core Functionality (Priority 2)
+
+- **User Account Management**
+  - Build user profile display in `my-account.tsx`
+  - Add user data fetching and display
+  - Implement account settings/preferences
+
+- **Checkout Process**
+  - Complete `checkout/index.tsx` with cart summary
+  - Add shipping/billing forms
+  - Implement `order-confirmation.tsx`
+
+- **Protected Routes**
+  - Add authentication guards to checkout routes
+  - Implement proper redirect logic
+
+### 🎨 UI/UX Improvements (Priority 3)
+
+- **Form Validation**
+  - Add Zod/Valibot for login form
+  - Implement checkout form validation
+  - Add loading states and error messages
+
+- **Navigation & State**
+  - Add user menu/dropdown when logged in
+  - Show login/logout states in header
+  - Persist basket across sessions
+
+### 🧪 Testing & Quality (Priority 4)
+
+- **Expand Test Coverage**
+  - Add tests for auth API functions
+  - Test protected route behavior
+  - Add integration tests for login flow
+
+- **Error Handling**
+  - Add global error boundaries
+  - Implement proper API error handling
+  - Add network error recovery
+
+### 🚀 Future Enhancements (Priority 5)
+
+- **Advanced Features**
+  - Order history in user account
+  - Wishlist functionality
+  - Product reviews/ratings
+  - Search filters and sorting
+
 ## 🤝 Contributing & Collaboration
 
 ### We Need Help! 🎨
