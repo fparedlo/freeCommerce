@@ -1,5 +1,7 @@
+import { login } from "@/api/auth";
+import { Button } from "@/ui/components";
 import { formatDate } from "@/utils/formatDate";
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/auth/my-account")({
   component: RouteComponent,
@@ -14,7 +16,26 @@ export const Route = createFileRoute("/auth/my-account")({
 
 function RouteComponent() {
   const { authData } = Route.useRouteContext();
+  const navigate = useNavigate();
   const user = authData.data;
+  
+  const handleLogout = async () => {
+    try {
+      const data  = {
+        username: user?.username as string,
+        password: user?.password as string,
+        expiresInMins: 0
+      }
+      const logout = await login(data);
+      if (logout.success) {
+        navigate({to: "/"});
+      }
+    }catch(error) {
+      console.error("Logout failed:", error);
+    }
+    
+  }
+
   return (
     <section className="mt-16">
       <h1 className="font-extrabold text-2xl">
@@ -32,11 +53,11 @@ function RouteComponent() {
 
       <p className="mt-2 font-bold">Address:</p>
       <p>
-        {user?.address.address}, {user?.address.city}, {user?.address.stateCode}
-        ,{user?.address.postalCode}, {user?.address.country}
+        {user?.address.address}, {user?.address.city}, {user?.address.stateCode} {user?.address.postalCode}, {user?.address.country}
       </p>
 
-      <p></p>
+      <Button type="button" extraClasses="mt-8" text="Logout" action={handleLogout} />
+
     </section>
   );
 }

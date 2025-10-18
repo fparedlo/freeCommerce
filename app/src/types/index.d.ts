@@ -72,6 +72,7 @@ export interface LoginResult {
 export interface UserInput {
   username: string;
   password: string;
+  expiresInMins?: number;
 }
 
 export interface Data {
