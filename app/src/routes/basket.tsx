@@ -19,7 +19,7 @@ function RouteComponent() {
             {basket.map((product) => (
               <li
                 key={product.transitionId}
-                className="flex items-center gap-4 py-8 border-b-1 border-neutral-200 first-of-type:border-t-1 first-of-type:mt-12"
+                className="flex items-center gap-4 py-8 border-b border-neutral-200 first-of-type:border-t first-of-type:mt-12"
               >
                 <img src={product.thumbnail} alt="" width="100" height="100" />
                 <p>{product.title} </p>
