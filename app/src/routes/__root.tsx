@@ -9,8 +9,12 @@ const queryClient = new QueryClient({});
 
 const RootLayout = () => (
   <QueryClientProvider client={queryClient}>
+    <div className="bg-black text-white px-2 py-1 text-center">
+        Please be aware this website is just a demo, no data is processed or kept.
+      </div>
     <div className="container mx-auto mt-6 px-4 2xl:px-0 font-roboto min-w-[375px]">
       {/* TODO: sort view in small screens */}
+      
       <header className="grid grid-cols-[1fr_auto_auto] items-center">
         <div>
           <Link to="/">

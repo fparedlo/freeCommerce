@@ -38,10 +38,10 @@ function RouteComponent() {
   return (
     <section className="mt-16">
       <h1 className="font-extrabold text-2xl">
-        My Account: {user?.firstName} {user?.lastName}
+        My Account: <span className="font-normal">{user?.firstName} {user?.lastName}</span>
       </h1>
 
-      <p className="mt-2 font-bold">Birth date:</p>
+      <p className="mt-6 font-bold">Birth date:</p>
       <p>{user?.birthDate && formatDate(user?.birthDate)}</p>
 
       <p className="mt-2 font-bold">Email:</p>
