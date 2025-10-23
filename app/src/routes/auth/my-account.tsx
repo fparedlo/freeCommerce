@@ -18,23 +18,22 @@ function RouteComponent() {
   const { authData } = Route.useRouteContext();
   const navigate = useNavigate();
   const user = authData.data;
-  
+
   const handleLogout = async () => {
     try {
-      const data  = {
+      const data = {
         username: user?.username as string,
         password: user?.password as string,
-        expiresInMins: 0
-      }
+        expiresInMins: 0,
+      };
       const logout = await login(data);
       if (logout.success) {
-        navigate({to: "/"});
+        navigate({ to: "/" });
       }
-    }catch(error) {
+    } catch (error) {
       console.error("Logout failed:", error);
     }
-    
-  }
+  };
 
   return (
     <section className="mt-16">
@@ -53,11 +52,16 @@ function RouteComponent() {
 
       <p className="mt-2 font-bold">Address:</p>
       <p>
-        {user?.address.address}, {user?.address.city}, {user?.address.stateCode} {user?.address.postalCode}, {user?.address.country}
+        {user?.address.address}, {user?.address.city}, {user?.address.stateCode}{" "}
+        {user?.address.postalCode}, {user?.address.country}
       </p>
 
-      <Button type="button" extraClasses="mt-8" text="Logout" action={handleLogout} />
-
+      <Button
+        type="button"
+        extraClasses="mt-8"
+        text="Logout"
+        action={handleLogout}
+      />
     </section>
   );
 }

@@ -1,6 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useBasketStore } from "@/stores/basket";
 import { priceFormat } from "@/utils";
+import { LinkButton } from "@/ui/components";
 
 export const Route = createFileRoute("/basket")({
   component: RouteComponent,
@@ -44,6 +45,11 @@ function RouteComponent() {
             <p>
               Total basket value: <b>{priceFormat(totalCost())}</b>
             </p>
+            <LinkButton
+              url="/checkout"
+              text="Go to Checkout"
+              extraClasses="mt-10"
+            ></LinkButton>
           </div>
         </>
       ) : (
