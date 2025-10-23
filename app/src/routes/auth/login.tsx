@@ -69,8 +69,12 @@ function RouteComponent() {
       </form>
       <div className="border-2 p-4 mt-6 border-neutral-400 text-neutral-500 bg-neutral-100">
         <p>This is a demo website, you can use the following login:</p>
-        <p><strong>user:</strong> johnd</p>
-        <p><strong>password:</strong> johndpass</p>
+        <p>
+          <strong>user:</strong> johnd
+        </p>
+        <p>
+          <strong>password:</strong> johndpass
+        </p>
       </div>
     </section>
   );

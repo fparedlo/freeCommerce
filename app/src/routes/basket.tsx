@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useBasketStore } from "@/stores/basket";
 import { priceFormat } from "@/utils";
 import { LinkButton } from "@/ui/components";

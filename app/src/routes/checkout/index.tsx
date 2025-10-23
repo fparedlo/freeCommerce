@@ -10,7 +10,7 @@ function RouteComponent() {
   const [guest, setGuest] = useState<boolean>(false);
   const { authData } = Route.useRouteContext();
   const continueAsGuest = () => setGuest(true);
-  console.log(authData)
+  console.log(authData);
   return (
     <section className="mt-16">
       {!authData.success && !guest && (
