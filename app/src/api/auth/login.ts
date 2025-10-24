@@ -6,7 +6,7 @@ export async function login({
   expiresInMins = 30,
 }: UserInput): Promise<LoginResult> {
   try {
-    if (username.length === 0 && password.length < 8) {
+    if (username.length === 0 || password.length < 8) {
       throw new Error("Invalid User or Password");
     }
 
@@ -27,6 +27,9 @@ export async function login({
     const data = await response.json();
     return { success: true, data };
   } catch (error) {
-    return { success: false, error: error };
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : String(error),
+    };
   }
 }

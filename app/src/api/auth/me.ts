@@ -14,10 +14,17 @@ export async function me(): Promise<MeResult> {
       };
     }
 
-    const data = await response.json();
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      return { success: false, error: "Invalid JSON response" };
+    }
+
     if (!data || typeof data !== "object") {
       return { success: false, error: "Invalid response format" };
     }
+
     return { success: true, data };
   } catch (error) {
     return {

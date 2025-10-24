@@ -24,7 +24,10 @@ function RouteComponent() {
 
   const { isPending, error, data } = useQuery({
     queryKey: ["search-products", search.q],
-    queryFn: () => getProducts(import.meta.env.VITE_SEARCH_PRODUCTS + search.q),
+    queryFn: () =>
+      getProducts(
+        import.meta.env.VITE_SEARCH_PRODUCTS + encodeURIComponent(search.q),
+      ),
     staleTime: 15 * 60 * 1000,
   });
 

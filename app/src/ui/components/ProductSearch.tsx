@@ -27,7 +27,7 @@ export function ProductSearch() {
         <input
           type="text"
           id="default-search"
-          className="text-2xl p-4 focus:border-0 focus:outline-0 focus:no-c"
+          className="text-2xl p-4 focus:border-0 focus:outline-0"
           placeholder="Search product..."
           ref={searchTerm}
           required

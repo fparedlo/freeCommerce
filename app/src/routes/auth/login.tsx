@@ -25,7 +25,7 @@ function RouteComponent() {
       password: (formData.get("password") as string) ?? "",
     };
 
-
+    try {
       const loginResult = await login(data);
 
       if (loginResult.success && loginResult.data?.accessToken) {
@@ -33,7 +33,10 @@ function RouteComponent() {
       } else {
         setLoginIncorrect(true);
       }
-    
+    } catch (error) {
+      console.error("Login error:", error);
+      setLoginIncorrect(true);
+    }
   };
 
   return (

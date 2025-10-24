@@ -37,7 +37,12 @@ const RootLayout = () => (
 export const Route = createRootRoute({
   component: RootLayout,
   beforeLoad: async () => {
-    const authData = await me();
-    return { authData };
+    try {
+      const authData = await me();
+      return { authData };
+    } catch (error) {
+      console.error("Auth check failed:", error);
+      return { authData: { success: false } };
+    }
   },
 });

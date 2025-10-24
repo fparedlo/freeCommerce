@@ -8,7 +8,9 @@ export const Route = createFileRoute("/checkout/")({
 
 function RouteComponent() {
   const [guest, setGuest] = useState<boolean>(false);
-  const { authData } = Route.useRouteContext();
+  const { authData } = Route.useRouteContext() ?? {
+    authData: { success: false },
+  };
   const continueAsGuest = () => setGuest(true);
   return (
     <section className="mt-16">

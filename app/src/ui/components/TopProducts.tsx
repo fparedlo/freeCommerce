@@ -13,7 +13,7 @@ export function BestSellers() {
     <div className="mt-12">
       <h2 className="font-extrabold text-2xl">Top 10 Products:</h2>
       {isPending && <Spinner />}
-      {error && <ErrorInfo message={error.message} />}
+      {error && <ErrorInfo message={error?.message} />}
       <ul className="flex flex-nowrap gap-10 w-full overflow-x-auto scroll-smooth pb-4 group is-carousel">
         {data?.map((p) => (
           <ProductCard product={p} key={p.id} />

@@ -7,7 +7,12 @@ export async function getProducts(url: string): Promise<Product[]> {
       throw new Error(`${response.status} - ${response.statusText}`);
     }
     const data = await response.json();
-    const products = data?.products || [];
+
+    if (!data || typeof data !== "object" || !Array.isArray(data.products)) {
+      throw new Error("Invalid response format");
+    }
+
+    const products = data.products;
     return products;
   } catch (err) {
     const errorMessage =

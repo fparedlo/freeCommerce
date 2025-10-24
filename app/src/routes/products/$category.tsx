@@ -24,7 +24,7 @@ function RouteComponent() {
     <>
       <ProductSearch />
       <h1 className="font-extrabold text-2xl capitalize">
-        {category.replace("-", " ")}:
+        {category.replaceAll("-", " ")}:
       </h1>
       {isPending && <Spinner />}
       {error && <ErrorInfo message={error.message} />}

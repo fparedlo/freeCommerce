@@ -29,11 +29,20 @@ function RouteComponent() {
 
   const addToBasket = (formData: FormData) => {
     const rawProductData = formData.get("product");
-    if (!rawProductData || typeof rawProductData !== 'string') {
-      console.error('Invalid product data');
+    if (!rawProductData || typeof rawProductData !== "string") {
+      console.error("Invalid product data in addToBasket:", {
+        rawProductData,
+        type: typeof rawProductData,
+      });
       return;
     }
-    const productData = JSON.parse(rawProductData);
+    let productData;
+    try {
+      productData = JSON.parse(rawProductData);
+    } catch (error) {
+      console.error("Failed to parse product data:", error);
+      return;
+    }
     const { sku, title, thumbnail, price } = productData;
     const data: BasketItem = {
       sku,

@@ -16,7 +16,6 @@ declare module "@tanstack/react-router" {
   }
 }
 
-// amazonq-ignore-next-line
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RouterProvider router={router} />

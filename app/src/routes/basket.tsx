@@ -21,7 +21,12 @@ function RouteComponent() {
                 key={product.transitionId}
                 className="flex items-center gap-4 py-8 border-b border-neutral-200 first-of-type:border-t first-of-type:mt-12"
               >
-                <img src={product.thumbnail} alt="" width="100" height="100" />
+                <img
+                  src={product.thumbnail}
+                  alt={product.title}
+                  width="100"
+                  height="100"
+                />
                 <p>{product.title} </p>
                 <div className="ml-auto flex gap-5 items-center">
                   <p className="text-lg">{priceFormat(product.price)}</p>

@@ -33,6 +33,7 @@ describe("getProducts", () => {
       statusText: "Not Found",
     });
 
+    // amazonq-ignore-next-line
     const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 
     const result = await getProducts("https://api.example.com/products");

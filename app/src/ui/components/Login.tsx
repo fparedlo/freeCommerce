@@ -9,7 +9,7 @@ export function Login() {
         aria-label="login"
         className="flex items-center gap-1 text-md font-light text-right"
       >
-        {authData?.success ? (
+        {authData.success ? (
           <span>{authData.data?.firstName}</span>
         ) : (
           <span>Sign In</span>

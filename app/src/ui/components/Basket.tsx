@@ -3,12 +3,12 @@ import { Link } from "@tanstack/react-router";
 
 export function Basket() {
   const { basket } = useBasketStore();
-
+  const basketLength = basket.length;
   return (
     <div className="ml-4 flex items-center gap-2">
       <div>
         <p className="text-md font-light text-right leading-4 md:leading-6">
-          {basket.length} {basket.length === 1 ? "item" : "items"}
+          {basketLength} {basketLength === 1 ? "item" : "items"}
         </p>
       </div>
       <Link to="/basket" aria-label="Basket">
