@@ -62,13 +62,20 @@ A modern open-source e-commerce application built with React, TypeScript, and Vi
 ```
 src/
 ├── api/           # API layer (products, auth)
-│   └── auth/      # Authentication endpoints (login, me)
+│   ├── auth/      # Authentication endpoints (login, me, logout)
+│   └── products/  # Product endpoints (getProducts, etc.)
 ├── routes/        # File-based routes
-│   └── auth/      # Authentication routes (login, my-account)
+│   ├── auth/      # Authentication routes (login, my-account)
+│   ├── checkout/  # Checkout routes (index, order-confirmation)
+│   ├── product/   # Individual product pages
+│   └── products/  # Product listing pages
 ├── stores/        # Zustand stores
+│   ├── basket/    # Shopping basket state
+│   └── user/      # User state (empty - using context instead)
 ├── types/         # TypeScript type definitions
 ├── ui/            # UI components and styles
-├── utils/         # Utility functions (cookies, date formatting, etc.)
+│   └── components/# Reusable components (Button, Login, Basket, etc.)
+├── utils/         # Utility functions (price, date formatting)
 └── main.tsx       # App entry point
 ```
 
@@ -100,25 +107,9 @@ proxy: {
 
 2. **Update API Functions**: Modify functions in `src/api/` to match your backend:
 
-```typescript
-// src/api/products/getProducts.ts
-export async function getProducts(URL: string): Promise<Product[]> {
-  // Customize response parsing based on your API structure
-  const { data }: { data: Product[] } = await response.json();
-  return data;
-}
-```
 
 3. **Update Type Definitions**: Modify `src/types/index.d.ts` to match your data contracts:
 
-```typescript
-export interface Product {
-  id: number;
-  name: string; // Change from 'title' if needed
-  cost: number; // Change from 'price' if needed
-  // Add your custom fields
-}
-```
 
 ### Adding New Features
 
@@ -127,54 +118,7 @@ export interface Product {
 - **New State**: Add stores in `src/stores/`
 - **New Components**: Add to `src/ui/components/`
 
-## 🚧 In Progress / TODO
 
-### Authentication ✅
-
-- **Login functionality** - Complete with form validation and error handling ✅
-- **User session management** - HTTPOnly cookie authentication ✅
-- **Protected routes** - Route guards with automatic redirects ✅
-- **Logout functionality** - Server-side session invalidation ✅
-- **Error handling** - Silent handling of expected auth errors ✅
-- **User account management** - Complete profile display with user data ✅
-- **Global auth context** - Shared auth state across all routes ✅
-
-### Checkout Process
-
-- Checkout flow implementation
-- Order confirmation
-- Payment integration
-
-### Testing
-
-- **Unit tests** for utils and API functions with Vitest ✅
-- **Cookie utilities tests** - Testing browser cookie interactions ✅
-- **Date formatting tests** - Testing date utility functions ✅
-- **Component tests** for UI components (buttons need to button)
-- **Integration tests** for routes and API calls
-- **E2E tests** for critical user flows
-- _Sorry for not doing TDD! 🙈 I promise the code works... mostly... probably... please don't break it_
-
-### Enhancements
-
-- Form validation with Zod/Valibot
-- Mobile responsive improvements
-- Product filtering and sorting
-- Wishlist functionality
-
-## 🔒 Security & Code Quality
-
-### Current Status
-- ✅ HTTPOnly cookie authentication implemented
-- ⚠️ **Action Required**: Address SSRF vulnerabilities in API endpoints
-- ⚠️ **Action Required**: Improve error handling across components
-- ⚠️ **Action Required**: Add input validation for user inputs
-
-### Security Best Practices
-- Use environment variables for sensitive configuration
-- Implement proper CORS policies
-- Add rate limiting for API endpoints
-- Validate and sanitize all user inputs
 
 ## 🛠️ Development
 
@@ -234,14 +178,14 @@ The app is configured for Netlify deployment with:
 
 ## 🗺️ Development Roadmap
 
-### 🚨 Critical Fixes (Priority 1)
+### 🚨 Critical Fixes (Priority 1) ✅
 
-- **Fix Authentication Flow**
+- **Fix Authentication Flow** ✅
   - ✅ Update `my-account.tsx` - remove token parameter from `me()` call
-  - ✅ Implement logout functionality with proper cookie clearing
+  - ✅ Implement logout functionality (using login with 0 expiry)
   - ✅ Add silent error handling for expected 401s during auth checks
 
-- **Complete Missing API Functions**
+- **Complete Missing API Functions** ✅
   - ✅ Implement `logout.ts` function
   - ✅ Add proper error handling to all API calls
 
@@ -253,55 +197,68 @@ The app is configured for Netlify deployment with:
   - ✅ Optimize API calls with context passing
   - ✅ Add date formatting utility
   - ✅ Global auth context for shared state
-  - ✅ Dynamic UI based on auth state
-  - Implement account settings/preferences
+  - ✅ Dynamic UI based on auth state (Login component)
+  - ✅ Protected routes with beforeLoad guards
+  - Implement account settings/preferences - TODO
 
-- **Checkout Process**
-  - Complete `checkout/index.tsx` with cart summary
-  - Add shipping/billing forms
-  - Implement `order-confirmation.tsx`
-
-- **Protected Routes**
-  - Add authentication guards to checkout routes
-  - Implement proper redirect logic
+- **Checkout Process** ⚠️
+  - ✅ Basic `checkout/index.tsx` with guest/login selection
+  - ✅ Created `order-confirmation.tsx` placeholder
+  - Complete cart summary display - TODO
+  - Add shipping/billing forms - TODO
+  - Implement payment flow - TODO
 
 ### 🎨 UI/UX Improvements (Priority 3)
 
-- **Form Validation**
-  - Add Zod/Valibot for login form
-  - Implement checkout form validation
-  - Add loading states and error messages
+- **Form Validation** ⚠️
+  - ✅ Zod installed in dependencies
+  - Add Zod validation for login form - TODO
+  - Implement checkout form validation - TODO
+  - ✅ Basic error messages in login form
+  - Add loading states - TODO
 
-- **Navigation & State**
-  - Add user menu/dropdown when logged in
-  - **Show login/logout states in header** ✅
-  - Persist basket across sessions
+- **Navigation & State** ⚠️
+  - Add user menu/dropdown when logged in - TODO
+  - ✅ Show login/logout states in header (Login component)
+  - ✅ Basket persists across sessions (localStorage)
 
 ### 🧪 Testing & Quality (Priority 4)
 
-- **Fix Critical Security Issues**
-  - Address server-side request forgery vulnerabilities in API functions
-  - Improve error handling across components
-  - Add input validation and sanitization
+- **Fix Critical Security Issues** ⚠️
+  - Address server-side request forgery vulnerabilities in API functions - TODO
+  - ✅ Improved error handling in auth API calls
+  - Add input validation and sanitization - TODO
 
-- **Expand Test Coverage**
-  - Add tests for auth API functions
-  - Test protected route behavior
-  - Add integration tests for login flow
+- **Expand Test Coverage** ⚠️
+  - ✅ Unit tests for utility functions (price, date formatting)
+  - Add tests for auth API functions - TODO
+  - Test protected route behavior - TODO
+  - Add integration tests for login flow - TODO
+  - Add component tests - TODO
 
-- **Error Handling & Performance**
-  - Add global error boundaries
-  - Implement proper API error handling
-  - Fix performance inefficiencies in utility functions
-  - Add network error recovery
+- **Error Handling & Performance** ⚠️
+  - Add global error boundaries - TODO
+  - ✅ Proper API error handling in auth functions
+  - Review performance in utility functions - TODO
+  - Add network error recovery - TODO
 
 ### 🚀 Future Enhancements (Priority 5)
 
-- **Advanced Features**
-  - Order history in user account
-  - Wishlist functionality
-  - Product reviews/ratings
-  - Search filters and sorting
+- Order history in user account
+- Wishlist functionality
+- Product reviews/ratings
+- Search filters and sorting
+- Mobile responsive improvements
+- User menu/dropdown when logged in
+
+### 🔒 Security Best Practices
+
+- Use environment variables for sensitive configuration
+- Implement proper CORS policies
+- Add rate limiting for API endpoints
+- Validate and sanitize all user inputs
+
+_Sorry for not doing TDD! 🙈 I promise the code works... mostly... probably... please don't break it_
 
 ## 🤝 Contributing & Collaboration
 
