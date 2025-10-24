@@ -2,7 +2,7 @@ import { Button, Spinner, ErrorInfo } from "@/ui/components";
 import { getProducts } from "@/api/products";
 import { previousPrice, priceFormat } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import type { BasketItem } from "@/types";
 import { useBasketStore } from "@/stores/basket";
@@ -12,6 +12,7 @@ export const Route = createFileRoute("/product/$productSku")({
 });
 
 function RouteComponent() {
+  const navigate = useNavigate();
   const { productSku } = Route.useParams();
   const { addItem } = useBasketStore();
 
@@ -63,9 +64,19 @@ function RouteComponent() {
           </div>
           <div className="lg:border-l-2 md:pt-10 md:pl-10 border-dashed">
             <h1 className="text-3xl font-bold">{productData.title}</h1>
-            <h2 className="bg-black text-white inline-block px-2">
-              {productData.brand}
-            </h2>
+
+            <Button
+              type="button"
+              text={productData.brand}
+              extraClasses="px-2! py-0! text-[16px]! normal-case! inline-block! w-auto!"
+              action={() =>
+                navigate({
+                  to: "/products/search",
+                  search: { q: productData.brand },
+                })
+              }
+            />
+
             <p className="text-lg mt-4">{productData.description}</p>
             <p className="text-2xl mt-4">
               {priceFormat(productData.price)}{" "}
