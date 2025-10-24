@@ -15,8 +15,14 @@ export async function me(): Promise<MeResult> {
     }
 
     const data = await response.json();
+    if (!data || typeof data !== "object") {
+      return { success: false, error: "Invalid response format" };
+    }
     return { success: true, data };
   } catch (error) {
-    return { success: false, error: `${error}` };
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : String(error),
+    };
   }
 }

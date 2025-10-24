@@ -30,11 +30,11 @@ function Index() {
       {error && <ErrorInfo message={error.message} />}
       <nav>
         <ul className="flex flex-wrap gap-6 w-full mt-8">
-          {data?.map((category, indx) => (
+          {data?.map((category, index) => (
             <Link
               to="/products/$category"
               params={{ category: category.slug }}
-              key={indx}
+              key={index}
               className="bg-black text-white py-4 px-6 text-lg"
             >
               {category.name}

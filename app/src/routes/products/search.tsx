@@ -15,12 +15,12 @@ export const Route = createFileRoute("/products/search")({
 
 // TODO: add Validation is Zod or Valibot
 
-interface searchParams {
+interface SearchParams {
   q: string;
 }
 
 function RouteComponent() {
-  const search: searchParams = Route.useSearch();
+  const search: SearchParams = Route.useSearch();
 
   const { isPending, error, data } = useQuery({
     queryKey: ["search-products", search.q],
@@ -35,7 +35,7 @@ function RouteComponent() {
       {error && <ErrorInfo message={error.message} />}
       {data?.length === 0 ? (
         <p className="text-center text-2xl mt-4 font-light">
-          <span className="font-bold">Not products found for this search:</span>{" "}
+          <span className="font-bold">No products found for this search:</span>{" "}
           {search.q}
         </p>
       ) : (

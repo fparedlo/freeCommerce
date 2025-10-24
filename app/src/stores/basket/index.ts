@@ -2,7 +2,7 @@ import type { BasketItem } from "@/types";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-type basketStore = {
+type BasketStore = {
   basket: BasketItem[];
   addItem: (item: BasketItem) => void;
   removeItem: (item: BasketItem) => void;
@@ -10,12 +10,13 @@ type basketStore = {
   cleanBasket: () => void;
 };
 
-export const useBasketStore = create<basketStore>()(
+export const useBasketStore = create<BasketStore>()(
   persist(
     (set, get) => ({
       basket: [],
       addItem: (item: BasketItem) =>
         set({
+          // we allow adding to the basket the same item multiple times
           basket: [...(get().basket || []), item],
         }),
       removeItem: (item: BasketItem) => {

@@ -162,6 +162,20 @@ export interface Product {
 - Product filtering and sorting
 - Wishlist functionality
 
+## 🔒 Security & Code Quality
+
+### Current Status
+- ✅ HTTPOnly cookie authentication implemented
+- ⚠️ **Action Required**: Address SSRF vulnerabilities in API endpoints
+- ⚠️ **Action Required**: Improve error handling across components
+- ⚠️ **Action Required**: Add input validation for user inputs
+
+### Security Best Practices
+- Use environment variables for sensitive configuration
+- Implement proper CORS policies
+- Add rate limiting for API endpoints
+- Validate and sanitize all user inputs
+
 ## 🛠️ Development
 
 ```bash
@@ -265,14 +279,20 @@ The app is configured for Netlify deployment with:
 
 ### 🧪 Testing & Quality (Priority 4)
 
+- **Fix Critical Security Issues**
+  - Address server-side request forgery vulnerabilities in API functions
+  - Improve error handling across components
+  - Add input validation and sanitization
+
 - **Expand Test Coverage**
   - Add tests for auth API functions
   - Test protected route behavior
   - Add integration tests for login flow
 
-- **Error Handling**
+- **Error Handling & Performance**
   - Add global error boundaries
   - Implement proper API error handling
+  - Fix performance inefficiencies in utility functions
   - Add network error recovery
 
 ### 🚀 Future Enhancements (Priority 5)

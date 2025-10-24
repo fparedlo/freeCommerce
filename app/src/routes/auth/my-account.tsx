@@ -22,8 +22,8 @@ function RouteComponent() {
   const handleLogout = async () => {
     try {
       const data = {
-        username: user?.username as string,
-        password: user?.password as string,
+        username: user!.username as string,
+        password: user!.password as string,
         expiresInMins: 0,
       };
       const logout = await login(data);
@@ -40,23 +40,23 @@ function RouteComponent() {
       <h1 className="font-extrabold text-2xl">
         My Account:{" "}
         <span className="font-normal">
-          {user?.firstName} {user?.lastName}
+          {user!.firstName} {user!.lastName}
         </span>
       </h1>
 
       <p className="mt-6 font-bold">Birth date:</p>
-      <p>{user?.birthDate && formatDate(user?.birthDate)}</p>
+      <p>{user!.birthDate && formatDate(user!.birthDate)}</p>
 
       <p className="mt-2 font-bold">Email:</p>
-      <p>{user?.email}</p>
+      <p>{user!.email}</p>
 
       <p className="mt-2 font-bold">Contact Number:</p>
-      <p>{user?.phone}</p>
+      <p>{user!.phone}</p>
 
       <p className="mt-2 font-bold">Address:</p>
       <p>
-        {user?.address.address}, {user?.address.city}, {user?.address.stateCode}{" "}
-        {user?.address.postalCode}, {user?.address.country}
+        {user!.address.address}, {user!.address.city}, {user!.address.stateCode}{" "}
+        {user!.address.postalCode}, {user!.address.country}
       </p>
 
       <Button

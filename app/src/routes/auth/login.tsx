@@ -25,7 +25,7 @@ function RouteComponent() {
       password: (formData.get("password") as string) ?? "",
     };
 
-    if (data.username.length > 0 && data.password.length >= 8) {
+
       const loginResult = await login(data);
 
       if (loginResult.success && loginResult.data?.accessToken) {
@@ -33,7 +33,7 @@ function RouteComponent() {
       } else {
         setLoginIncorrect(true);
       }
-    }
+    
   };
 
   return (

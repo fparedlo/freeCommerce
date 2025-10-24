@@ -9,7 +9,7 @@ export function ProductCard({ product }: { product: Product }) {
         <Link to="/product/$productSku" params={{ productSku: product.sku }}>
           <img
             src={product.thumbnail}
-            alt=""
+            alt={product.title}
             loading="lazy"
             className="h-[252px] mx-auto"
           />
