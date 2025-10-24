@@ -3,6 +3,7 @@ import {
   ProductSearch,
   Spinner,
   ErrorInfo,
+  LinkButton,
 } from "@/ui/components";
 import { getProducts } from "@/api/products";
 import { useQuery } from "@tanstack/react-query";
@@ -30,6 +31,7 @@ function RouteComponent() {
   return (
     <>
       <ProductSearch />
+      <h1 className="font-extrabold text-2xl mt-4 mb-8">Search results for: <span className="font-light">{search.q}</span></h1>
       {isPending && <Spinner />}
       {error && <ErrorInfo message={error.message} />}
       <ul className="flex flex-wrap gap-10 w-full group is-plp">
@@ -43,6 +45,7 @@ function RouteComponent() {
           {search.q}
         </p>
       )}
+      <LinkButton url="/products/all" text="Show me all" extraClasses="mt-20" />
     </>
   );
 }
