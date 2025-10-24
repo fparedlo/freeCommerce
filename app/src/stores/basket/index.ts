@@ -7,6 +7,7 @@ type basketStore = {
   addItem: (item: BasketItem) => void;
   removeItem: (item: BasketItem) => void;
   totalCost: () => number;
+  cleanBasket: () => void;
 };
 
 export const useBasketStore = create<basketStore>()(
@@ -29,6 +30,7 @@ export const useBasketStore = create<basketStore>()(
       totalCost: () => {
         return (get().basket || []).reduce((acc, item) => acc + item.price, 0);
       },
+      cleanBasket: () => set({ basket: [] }),
     }),
     {
       name: "basket-storage",

@@ -1,6 +1,6 @@
 export function Logo() {
   return (
-    <div className="inline-block text-xl md:text-3xl border-2 p-2.5">
+    <div className="inline-block text-2xl md:text-4xl">
       <span className="font-bold">free</span>
       <span className="font-light">Commerce</span>
     </div>

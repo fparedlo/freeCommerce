@@ -37,7 +37,7 @@ function RouteComponent() {
   };
 
   return (
-    <section className="mt-16">
+    <section className="mt-10">
       <h1 className="font-extrabold text-2xl">Login:</h1>
       <form action={tryLogin} className="grid gap-8 mt-6">
         <label>
@@ -68,7 +68,7 @@ function RouteComponent() {
         )}
       </form>
       <div className="border-2 p-4 mt-6 border-neutral-400 text-neutral-500 bg-neutral-100">
-        <p>This is a demo website, you can use the following login:</p>
+        <p className="mb-2">Please use the following login details:</p>
         <p>
           <strong>user:</strong> johnd
         </p>

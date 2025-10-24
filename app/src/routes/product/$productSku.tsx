@@ -57,7 +57,7 @@ function RouteComponent() {
                 key={i}
                 alt=""
                 fetchPriority="high"
-                className="w-full inline-block"
+                className="w-full inline-block object-cover"
               />
             ))}
           </div>

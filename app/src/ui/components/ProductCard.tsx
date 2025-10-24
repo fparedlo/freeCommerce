@@ -13,7 +13,7 @@ export function ProductCard({ product }: { product: Product }) {
             loading="lazy"
             className="h-[252px] mx-auto"
           />
-          <h1 className="text-lg font-[600] border-b-2 border-dashed py-4 mb-4">
+          <h1 className="text-lg font-semibold border-b-2 border-dashed py-4 mb-4">
             {product.title.length > 30
               ? product.title.slice(0, 30) + "..."
               : product.title}

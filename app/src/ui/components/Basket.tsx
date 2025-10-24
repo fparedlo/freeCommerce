@@ -12,7 +12,7 @@ export function Basket() {
         </p>
       </div>
       <Link to="/basket" aria-label="Basket">
-        <span className="material-symbols-outlined text-4xl! md:text-6xl!">
+        <span className="material-symbols-outlined text-4xl! md:text-6xl! rounded-full hover:bg-neutral-100 p-2">
           shopping_bag
         </span>
       </Link>

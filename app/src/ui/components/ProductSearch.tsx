@@ -19,7 +19,7 @@ export function ProductSearch() {
   };
 
   return (
-    <form className="py-16" onSubmit={handleSearch}>
+    <form className="pt-10 pb-8" onSubmit={handleSearch}>
       <label htmlFor="default-search" className="sr-only">
         Search
       </label>
@@ -32,22 +32,10 @@ export function ProductSearch() {
           ref={searchTerm}
           required
         />
-        <button type="submit" className="px-4 hover:cursor-pointer">
-          <svg
-            className="w-6 h-6"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-            />
-          </svg>
+        <button type="submit" className="hover:cursor-pointer">
+          <span className="material-symbols-outlined  text-4xl! py-2 px-3 hover:bg-neutral-100 rounded-full">
+            search
+          </span>
         </button>
       </search>
     </form>

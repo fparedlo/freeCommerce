@@ -36,7 +36,7 @@ function RouteComponent() {
   };
 
   return (
-    <section className="mt-16">
+    <section className="mt-10">
       <h1 className="font-extrabold text-2xl">
         My Account:{" "}
         <span className="font-normal">

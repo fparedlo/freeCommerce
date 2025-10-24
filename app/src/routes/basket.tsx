@@ -1,14 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useBasketStore } from "@/stores/basket";
 import { priceFormat } from "@/utils";
-import { LinkButton } from "@/ui/components";
+import { Button, LinkButton } from "@/ui/components";
 
 export const Route = createFileRoute("/basket")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const { basket, removeItem, totalCost } = useBasketStore();
+  const { basket, removeItem, totalCost, cleanBasket } = useBasketStore();
 
   return (
     <section className="mt-16">
@@ -50,10 +50,24 @@ function RouteComponent() {
               text="Go to Checkout"
               extraClasses="mt-10"
             ></LinkButton>
+            <Button
+              type="button"
+              text="Clean Basket"
+              extraClasses="mt-5"
+              action={cleanBasket}
+              invert
+            ></Button>
           </div>
         </>
       ) : (
-        <p className="mt-12 text-center text-6xl">Your basket is empty.</p>
+        <>
+          <p className="mt-12 text-center text-6xl">Your basket is empty.</p>
+          <LinkButton
+            url="/products/all"
+            text="Explore our products"
+            extraClasses="mt-10"
+          />
+        </>
       )}
     </section>
   );

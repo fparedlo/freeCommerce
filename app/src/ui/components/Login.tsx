@@ -17,7 +17,7 @@ export function Login() {
         ) : (
           <span>Sign In</span>
         )}
-        <span className="material-symbols-outlined text-4xl! md:text-6xl!">
+        <span className="material-symbols-outlined text-4xl! md:text-6xl! rounded-full hover:bg-neutral-100 p-2">
           person
         </span>
       </Link>
