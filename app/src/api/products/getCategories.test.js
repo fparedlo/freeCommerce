@@ -29,7 +29,6 @@ describe("getCategories", () => {
       statusText: "Internal Server Error",
     });
 
-    // amazonq-ignore-next-line
     const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 
     const result = await getCategories("https://api.example.com/categories");

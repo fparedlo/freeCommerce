@@ -55,7 +55,6 @@ export interface BasketItem {
   title: string;
   thumbnail: string;
   price: number;
-  // amazonq-ignore-next-line
   transitionId: string;
 }
 export interface MeResult {

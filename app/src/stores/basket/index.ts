@@ -22,7 +22,6 @@ export const useBasketStore = create<BasketStore>()(
       removeItem: (item: BasketItem) => {
         const oldBasket = get().basket || [];
         const updatedBasket = oldBasket.filter(
-          // amazonq-ignore-next-line
           (elem) => elem.transitionId !== item.transitionId,
         );
         set({

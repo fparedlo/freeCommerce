@@ -2,7 +2,7 @@
   "name": "@fparedlo/freecommerce",
   "description": "This is an open source ecommerce build on modern technologies and with startups and little businesses in mind.",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.3",
   "type": "module",
   "license": "MIT",
   "author": "Ferran Paredes (https://www.linkedin.com/in/fparedlo)",
