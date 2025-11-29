@@ -61,8 +61,8 @@ function RouteComponent() {
         </div>
 
         {/* Order Details Card */}
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-8 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 pb-8 border-b">
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-4 sm:p-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8 pb-8 border-b">
             <div>
               <p className="text-sm text-gray-500 mb-1">Order Number</p>
               <p className="font-bold text-lg">{orderData.orderNumber}</p>
@@ -112,7 +112,7 @@ function RouteComponent() {
           </div>
 
           {/* Shipping & Payment Info */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* Shipping Address */}
             <div>
               <h3 className="text-lg font-bold mb-3">Shipping Address</h3>
@@ -147,7 +147,7 @@ function RouteComponent() {
         </div>
 
         {/* Fake shipping info */}
-        <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 mb-8">
+        <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 sm:p-6 mb-8">
           <div className="flex gap-4">
             <span className="material-symbols-outlined text-blue-600 text-3xl">
               local_shipping
@@ -166,7 +166,7 @@ function RouteComponent() {
         </div>
 
         {/* Disclaimer */}
-        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-6 mb-8">
+        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-4 sm:p-6 mb-8">
           <div className="flex gap-4">
             <span className="material-symbols-outlined text-yellow-600 text-3xl">
               info
@@ -182,7 +182,7 @@ function RouteComponent() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             type="button"
             action={() => navigate({ to: "/products/all" })}

@@ -123,9 +123,9 @@ function RouteComponent() {
               <Button type="submit" text="Add to Basket" extraClasses="mt-4" />
             </form>
             <h2 className="mt-8 font-bold text-xl">Reviews:</h2>
-            {productData.reviews.map((review) => (
+            {productData.reviews.map((review, index) => (
               <article
-                key={review.reviewerEmail}
+                key={`${review.reviewerEmail}-${index}`}
                 className="mt-6 border-t pt-4"
               >
                 <header className="">

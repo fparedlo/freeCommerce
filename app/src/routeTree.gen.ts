@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ErrorTestRouteImport } from './routes/error-test'
 import { Route as BasketRouteImport } from './routes/basket'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CheckoutIndexRouteImport } from './routes/checkout/index'
@@ -20,6 +21,11 @@ import { Route as CheckoutOrderConfirmationRouteImport } from './routes/checkout
 import { Route as AuthMyAccountRouteImport } from './routes/auth/my-account'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
 
+const ErrorTestRoute = ErrorTestRouteImport.update({
+  id: '/error-test',
+  path: '/error-test',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BasketRoute = BasketRouteImport.update({
   id: '/basket',
   path: '/basket',
@@ -75,6 +81,7 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/basket': typeof BasketRoute
+  '/error-test': typeof ErrorTestRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/my-account': typeof AuthMyAccountRoute
   '/checkout/order-confirmation': typeof CheckoutOrderConfirmationRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/basket': typeof BasketRoute
+  '/error-test': typeof ErrorTestRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/my-account': typeof AuthMyAccountRoute
   '/checkout/order-confirmation': typeof CheckoutOrderConfirmationRoute
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/basket': typeof BasketRoute
+  '/error-test': typeof ErrorTestRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/my-account': typeof AuthMyAccountRoute
   '/checkout/order-confirmation': typeof CheckoutOrderConfirmationRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/basket'
+    | '/error-test'
     | '/auth/login'
     | '/auth/my-account'
     | '/checkout/order-confirmation'
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/basket'
+    | '/error-test'
     | '/auth/login'
     | '/auth/my-account'
     | '/checkout/order-confirmation'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/basket'
+    | '/error-test'
     | '/auth/login'
     | '/auth/my-account'
     | '/checkout/order-confirmation'
@@ -151,6 +163,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BasketRoute: typeof BasketRoute
+  ErrorTestRoute: typeof ErrorTestRoute
   AuthLoginRoute: typeof AuthLoginRoute
   AuthMyAccountRoute: typeof AuthMyAccountRoute
   CheckoutOrderConfirmationRoute: typeof CheckoutOrderConfirmationRoute
@@ -163,6 +176,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/error-test': {
+      id: '/error-test'
+      path: '/error-test'
+      fullPath: '/error-test'
+      preLoaderRoute: typeof ErrorTestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/basket': {
       id: '/basket'
       path: '/basket'
@@ -239,6 +259,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BasketRoute: BasketRoute,
+  ErrorTestRoute: ErrorTestRoute,
   AuthLoginRoute: AuthLoginRoute,
   AuthMyAccountRoute: AuthMyAccountRoute,
   CheckoutOrderConfirmationRoute: CheckoutOrderConfirmationRoute,

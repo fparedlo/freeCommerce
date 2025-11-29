@@ -188,28 +188,28 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
       {/* Main Form */}
-      <div className="lg:col-span-2">
+      <div className="lg:col-span-2 order-2 lg:order-1">
         {/* Progress Steps */}
         <div className="mb-8 flex items-center justify-between">
           <div className="flex-1">
             <div
-              className={`text-sm font-medium ${step === "shipping" ? "text-black" : "text-gray-400"}`}
+              className={`text-xs sm:text-sm font-medium ${step === "shipping" ? "text-black" : "text-gray-400"}`}
             >
               1. Shipping
             </div>
           </div>
-          <div className="flex-1 border-t-2 border-gray-300 mx-4"></div>
+          <div className="flex-1 border-t-2 border-gray-300 mx-2 sm:mx-4"></div>
           <div className="flex-1">
             <div
-              className={`text-sm font-medium ${step === "payment" ? "text-black" : "text-gray-400"}`}
+              className={`text-xs sm:text-sm font-medium ${step === "payment" ? "text-black" : "text-gray-400"}`}
             >
               2. Payment
             </div>
           </div>
-          <div className="flex-1 border-t-2 border-gray-300 mx-4"></div>
+          <div className="flex-1 border-t-2 border-gray-300 mx-2 sm:mx-4"></div>
           <div className="flex-1">
             <div
-              className={`text-sm font-medium ${step === "review" ? "text-black" : "text-gray-400"}`}
+              className={`text-xs sm:text-sm font-medium ${step === "review" ? "text-black" : "text-gray-400"}`}
             >
               3. Review
             </div>
@@ -218,8 +218,10 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
         {/* Shipping Form */}
         {step === "shipping" && (
-          <div className="bg-white p-6 rounded-lg border-2 border-gray-200">
-            <h2 className="text-2xl font-bold mb-6">Shipping Information</h2>
+          <div className="bg-white p-4 sm:p-6 rounded-lg border-2 border-gray-200">
+            <h2 className="text-xl sm:text-2xl font-bold mb-6">
+              Shipping Information
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Input
                 label="First Name"
@@ -318,8 +320,10 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
         {/* Payment Form */}
         {step === "payment" && (
-          <div className="bg-white p-6 rounded-lg border-2 border-gray-200">
-            <h2 className="text-2xl font-bold mb-6">Payment Information</h2>
+          <div className="bg-white p-4 sm:p-6 rounded-lg border-2 border-gray-200">
+            <h2 className="text-xl sm:text-2xl font-bold mb-6">
+              Payment Information
+            </h2>
             <div className="grid grid-cols-1 gap-4">
               <Input
                 label="Card Number"
@@ -346,7 +350,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
                 placeholder="JUAN PEREZ"
                 required
               />
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 <Input
                   label="Month (MM)"
                   type="text"
@@ -407,7 +411,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         {/* Review Step */}
         {step === "review" && (
           <div className="bg-white p-6 rounded-lg border-2 border-gray-200">
-            <h2 className="text-2xl font-bold mb-6">Review Order</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-6">Review Order</h2>
 
             <div className="space-y-6">
               {/* Shipping Info */}
@@ -475,9 +479,9 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
       </div>
 
       {/* Order Summary Sidebar */}
-      <div className="lg:col-span-1">
-        <div className="bg-white p-6 rounded-lg border-2 border-gray-200 sticky top-4">
-          <h3 className="text-xl font-bold mb-4">Order Summary</h3>
+      <div className="lg:col-span-1 order-1 lg:order-2">
+        <div className="bg-white p-4 sm:p-6 rounded-lg border-2 border-gray-200 lg:sticky lg:top-4">
+          <h3 className="text-lg sm:text-xl font-bold mb-4">Order Summary</h3>
           <div className="space-y-3 mb-4 max-h-64 overflow-y-auto">
             {basket.map((item) => (
               <div key={item.transitionId} className="flex gap-3 items-center">
