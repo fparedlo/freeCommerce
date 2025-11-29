@@ -158,3 +158,42 @@ export interface Hair {
   color: string;
   type: string;
 }
+
+export interface OrderData {
+  orderNumber: string;
+  date: Date;
+  items: BasketItem[];
+  total: number;
+  shipping: ShippingInfo;
+  billing?: BillingInfo;
+  payment: PaymentInfo;
+  status: "pending" | "processing" | "completed" | "failed";
+}
+
+export interface ShippingInfo {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+}
+
+export interface BillingInfo {
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+}
+
+export interface PaymentInfo {
+  cardNumber: string; // Last 4 digits only for display
+  cardholderName: string;
+  cardType: string;
+}

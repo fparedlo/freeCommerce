@@ -11,3 +11,4 @@ export * from "./LinkButton";
 export * from "./Button";
 export * from "./ProductsGrid";
 export * from "./ErrorInfo";
+export * from "./Input";

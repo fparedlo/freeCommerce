@@ -1,43 +1,34 @@
-import { Button, LinkButton } from "@/ui/components";
+import { CheckoutForm } from "@/ui/components/CheckoutForm";
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import type { OrderData } from "@/types";
+import { useToastStore } from "@/stores/toast";
 
 export const Route = createFileRoute("/checkout/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const [guest, setGuest] = useState<boolean>(false);
   const { authData } = Route.useRouteContext() ?? {
     authData: { success: false },
   };
-  const continueAsGuest = () => setGuest(true);
+  const { showToast } = useToastStore();
+
+  const handleOrderComplete = (order: OrderData) => {
+    showToast(`Order ${order.orderNumber} created successfully!`, "success");
+  };
+
   return (
     <section className="mt-16">
-      {!authData.success && !guest && (
-        <>
-          <h1 className="font-extrabold text-2xl mb-5">Continue as...</h1>
-          <div className="grid gap-3 grid-cols-2">
-            <Button
-              type="button"
-              text="Guest"
-              action={continueAsGuest}
-              extraClasses=""
-              invert
-            ></Button>
-
-            <LinkButton
-              url="/auth/login"
-              text="Login"
-              extraClasses=""
-            ></LinkButton>
-          </div>
-        </>
-      )}
-
-      {!authData.success && guest && <h1>Hello Guest</h1>}
-
-      {authData.success && <>Hello {authData.data?.firstName}</>}
+      <h1 className="font-extrabold text-3xl mb-8">Checkout</h1>
+      <CheckoutForm
+        userEmail={authData.success ? authData.data?.email : undefined}
+        userName={
+          authData.success
+            ? `${authData.data?.firstName} ${authData.data?.lastName}`
+            : undefined
+        }
+        onComplete={handleOrderComplete}
+      />
     </section>
   );
 }

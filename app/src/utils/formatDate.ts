@@ -4,6 +4,8 @@ const dateFormat = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
 });
 
-export function formatDate(dateString: string): string {
-  return dateFormat.format(new Date(dateString));
+export function formatDate(dateString: string | Date): string {
+  const date =
+    typeof dateString === "string" ? new Date(dateString) : dateString;
+  return dateFormat.format(date);
 }
