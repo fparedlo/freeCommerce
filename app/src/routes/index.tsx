@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   const { isPending, error, data } = useQuery({
     queryKey: ["categories"],
-    queryFn: () => getCategories(import.meta.env.VITE_CATEGORIES),
+    queryFn: () => getCategories(),
     staleTime: 15 * 60 * 1000,
   });
 

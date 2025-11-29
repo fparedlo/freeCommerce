@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useToastStore } from "@/stores/toast";
 import { useBasketStore } from "@/stores/basket";
 import { priceFormat } from "@/utils";
 import { Button, LinkButton } from "@/ui/components";
+import type { BasketItem } from "@/types";
 
 export const Route = createFileRoute("/basket")({
   component: RouteComponent,
@@ -9,6 +11,15 @@ export const Route = createFileRoute("/basket")({
 
 function RouteComponent() {
   const { basket, removeItem, totalCost, cleanBasket } = useBasketStore();
+  const { showToast } = useToastStore();
+
+  const handleRemove = (product: BasketItem) => {
+    removeItem(product);
+    showToast("Product removed from basket", "error", {
+      title: product.title,
+      thumbnail: product.thumbnail,
+    });
+  };
 
   return (
     <section className="mt-16">
@@ -33,7 +44,7 @@ function RouteComponent() {
                   <button
                     type="button"
                     className="cursor-pointer"
-                    onClick={() => removeItem(product)}
+                    onClick={() => handleRemove(product)}
                   >
                     <span className="material-symbols-outlined text-4xl!">
                       delete

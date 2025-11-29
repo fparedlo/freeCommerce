@@ -6,6 +6,7 @@ export * from "./ProductCard";
 export * from "./ProductSearch";
 export * from "./Spinner";
 export * from "./TopProducts";
+export * from "./Toast";
 export * from "./LinkButton";
 export * from "./Button";
 export * from "./ProductsGrid";

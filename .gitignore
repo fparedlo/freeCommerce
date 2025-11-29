@@ -26,3 +26,4 @@ dist-ssr
 
 # LinkedIn posts
 linkedin-post.md
+/stripe

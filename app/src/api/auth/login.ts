@@ -27,9 +27,11 @@ export async function login({
     const data = await response.json();
     return { success: true, data };
   } catch (error) {
+    console.error("Login error:", error);
     return {
       success: false,
-      error: error instanceof Error ? error.message : String(error),
+      error:
+        error instanceof Error ? error.message : "An unexpected error occurred",
     };
   }
 }

@@ -2,7 +2,7 @@ import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { Logo, Footer, Basket, Login } from "@/ui/components";
+import { Logo, Footer, Basket, Login, Toast } from "@/ui/components";
 import { me } from "@/api/auth";
 
 const queryClient = new QueryClient({});
@@ -30,6 +30,7 @@ const RootLayout = () => (
       </footer>
       <TanStackRouterDevtools />
       <ReactQueryDevtools />
+      <Toast />
     </div>
   </QueryClientProvider>
 );

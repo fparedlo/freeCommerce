@@ -15,7 +15,7 @@ export const Route = createFileRoute("/products/all")({
 function RouteComponent() {
   const { isPending, error, data } = useQuery({
     queryKey: ["all-products"],
-    queryFn: () => getProducts(import.meta.env.VITE_ALL_PRODUCTS),
+    queryFn: () => getProducts({ limit: 0 }),
     staleTime: 15 * 60 * 1000,
   });
 

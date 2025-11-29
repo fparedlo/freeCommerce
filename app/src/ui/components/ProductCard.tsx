@@ -11,7 +11,11 @@ export function ProductCard({ product }: { product: Product }) {
             src={product.thumbnail}
             alt={product.title}
             loading="lazy"
-            className="h-[252px] mx-auto"
+            className="h-[252px] mx-auto object-contain"
+            onError={(e) => {
+              e.currentTarget.src =
+                "https://placehold.co/300x300?text=No+Image";
+            }}
           />
           <h1 className="text-lg font-semibold border-b-2 border-dashed py-4 mb-4">
             {product.title.length > 30

@@ -16,7 +16,7 @@ function RouteComponent() {
   const { category } = Route.useParams();
   const { isPending, error, data } = useQuery({
     queryKey: [category],
-    queryFn: () => getProducts(import.meta.env.VITE_CATEGORY_BASE + category),
+    queryFn: () => getProducts({ category }),
     staleTime: 15 * 60 * 1000,
   });
 

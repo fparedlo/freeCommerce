@@ -6,6 +6,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo } from "react";
 import type { BasketItem } from "@/types";
 import { useBasketStore } from "@/stores/basket";
+import { useToastStore } from "@/stores/toast";
 
 export const Route = createFileRoute("/product/$productSku")({
   component: RouteComponent,
@@ -15,10 +16,11 @@ function RouteComponent() {
   const navigate = useNavigate();
   const { productSku } = Route.useParams();
   const { addItem } = useBasketStore();
+  const { showToast } = useToastStore();
 
   const { isPending, error, data } = useQuery({
     queryKey: ["all-products"],
-    queryFn: () => getProducts(import.meta.env.VITE_ALL_PRODUCTS),
+    queryFn: () => getProducts({ limit: 0 }),
     staleTime: 15 * 60 * 1000,
   });
 
@@ -52,6 +54,7 @@ function RouteComponent() {
       transitionId: crypto.randomUUID(),
     };
     addItem(data);
+    showToast("Product added to basket", "success", { title, thumbnail });
   };
 
   const rating = (r: number) => {

@@ -5,7 +5,7 @@ import { ProductCard, Spinner, ErrorInfo } from "@/ui/components";
 export function BestSellers() {
   const { isPending, error, data } = useQuery({
     queryKey: ["top-products"],
-    queryFn: () => getProducts(import.meta.env.VITE_TOP_PRODUCTS),
+    queryFn: () => getProducts({ limit: 10 }),
     staleTime: 15 * 60 * 1000,
   });
 

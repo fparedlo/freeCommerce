@@ -16,10 +16,12 @@ export const Route = createFileRoute("/auth/login")({
 
 function RouteComponent() {
   const [loginIncorrect, setLoginIncorrect] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const tryLogin = async (formData: FormData) => {
     setLoginIncorrect(false);
+    setIsLoading(true);
     const data = {
       username: (formData.get("username") as string) ?? "",
       password: (formData.get("password") as string) ?? "",
@@ -36,6 +38,8 @@ function RouteComponent() {
     } catch (error) {
       console.error("Login error:", error);
       setLoginIncorrect(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -51,6 +55,7 @@ function RouteComponent() {
             className="mt-1.5 text-2xl py-4 px-6 block w-full border-2"
             placeholder="JohnDoe"
             required
+            disabled={isLoading}
           />
         </label>
         <label>
@@ -61,9 +66,14 @@ function RouteComponent() {
             className="mt-1.5 text-2xl py-4 px-6 block w-full border-2"
             placeholder="********"
             required
+            disabled={isLoading}
           />
         </label>
-        <Button type="submit" text="Login" />
+        <Button
+          type="submit"
+          text={isLoading ? "Logging in..." : "Login"}
+          disabled={isLoading}
+        />
         {loginIncorrect && (
           <p className="text-center text-red-700">
             The login details are incorrect, try again.
