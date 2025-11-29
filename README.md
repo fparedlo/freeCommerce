@@ -29,9 +29,10 @@ A modern open-source e-commerce application built with React, TypeScript, and Vi
 
 - Responsive design with Tailwind CSS
 - Loading states with spinners
+- Toast notification system for user feedback
 - Error handling and user feedback
 - Material Symbols icons
-- Custom components library
+- Custom components library with enhanced Button component
 
 ## 🔧 Tech Stack
 
@@ -47,6 +48,7 @@ A modern open-source e-commerce application built with React, TypeScript, and Vi
 - **@tanstack/react-router** - File-based routing
 - **@tanstack/react-query** - Server state management
 - **Zustand** - Client state management
+- **Zod** - Schema validation and data safety
 - **@vitejs/plugin-react-swc** - Fast refresh with SWC
 
 ### Development Tools
@@ -71,10 +73,11 @@ src/
 │   └── products/  # Product listing pages
 ├── stores/        # Zustand stores
 │   ├── basket/    # Shopping basket state
+│   ├── toast/     # Toast notification state
 │   └── user/      # User state (empty - using context instead)
 ├── types/         # TypeScript type definitions
 ├── ui/            # UI components and styles
-│   └── components/# Reusable components (Button, Login, Basket, etc.)
+│   └── components/# Reusable components (Button, Login, Basket, Toast, etc.)
 ├── utils/         # Utility functions (price, date formatting)
 └── main.tsx       # App entry point
 ```
@@ -210,8 +213,10 @@ The app is configured for Netlify deployment with:
 
 ### 🎨 UI/UX Improvements (Priority 3)
 
-- **Form Validation** ⚠️
+- **Form Validation** ✅
   - ✅ Zod installed in dependencies
+  - ✅ Zod validation for API responses (products, categories)
+  - ✅ Data validation and type safety with runtime checks
   - Add Zod validation for login form - TODO
   - Implement checkout form validation - TODO
   - ✅ Basic error messages in login form
@@ -221,13 +226,18 @@ The app is configured for Netlify deployment with:
   - Add user menu/dropdown when logged in - TODO
   - ✅ Show login/logout states in header (Login component)
   - ✅ Basket persists across sessions (localStorage)
+  - ✅ Toast notification system for user feedback
+  - ✅ Enhanced Button component with variants (primary, secondary, outlined, danger)
+  - ✅ Loading and disabled states in Button component
 
 ### 🧪 Testing & Quality (Priority 4)
 
-- **Fix Critical Security Issues** ⚠️
-  - Address server-side request forgery vulnerabilities in API functions - TODO
+- **Fix Critical Security Issues** ✅
+  - ✅ Implemented CSRF protection in API calls
+  - ✅ Zod validation for API responses to prevent malicious data
   - ✅ Improved error handling in auth API calls
-  - Add input validation and sanitization - TODO
+  - ✅ Runtime data validation with Zod schemas
+  - Add input sanitization for user inputs - TODO
 
 - **Expand Test Coverage** ⚠️
   - ✅ Unit tests for utility functions (price, date formatting)
