@@ -3,15 +3,15 @@ import { Button } from "./Button";
 
 interface ErrorFallbackProps {
   error: Error | null;
-  resetError: () => void;
+  reset: () => void;
 }
 
-export function ErrorFallback({ error, resetError }: ErrorFallbackProps) {
+export function ErrorFallback({ error, reset }: ErrorFallbackProps) {
   const navigate = useNavigate();
   const isDevelopment = import.meta.env.DEV;
 
   const handleGoHome = () => {
-    resetError();
+    reset();
     navigate({ to: "/" });
   };
 
@@ -61,7 +61,7 @@ export function ErrorFallback({ error, resetError }: ErrorFallbackProps) {
           <Button
             type="button"
             text="Try Again"
-            action={resetError}
+            action={reset}
             extraClasses="flex-1"
           />
           <Button

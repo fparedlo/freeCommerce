@@ -6,11 +6,14 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
 
+import { ErrorFallback } from "@/ui/components/ErrorFallback";
+
 // Create a new router instance
 const router = createRouter({
   routeTree,
   defaultPreload: "intent",
   scrollRestoration: true,
+  defaultErrorComponent: ErrorFallback,
 });
 
 // Register the router instance for type safety

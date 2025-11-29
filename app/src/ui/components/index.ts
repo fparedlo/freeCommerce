@@ -12,4 +12,4 @@ export * from "./Button";
 export * from "./ProductsGrid";
 export * from "./ErrorInfo";
 export * from "./Input";
-export * from "./ErrorBoundary";
+
