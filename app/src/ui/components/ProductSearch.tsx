@@ -13,7 +13,11 @@ export function ProductSearch() {
     if (searchValue) {
       navigate({
         to: "/products/search",
-        search: { q: searchValue },
+        search: {
+          q: searchValue,
+          sortBy: "name",
+          minRating: 0,
+        },
       });
     }
   };

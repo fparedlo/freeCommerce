@@ -4,33 +4,56 @@ import {
   Spinner,
   ErrorInfo,
   LinkButton,
+  ProductFilters,
 } from "@/ui/components";
-import { getProducts } from "@/api/products";
+import { getProducts, type SortOption } from "@/api/products";
 import { useQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/products/search")({
   component: RouteComponent,
+  validateSearch: (search: Record<string, unknown>) => {
+    return {
+      q: (search.q as string) || "",
+      sortBy: (search.sortBy as SortOption) || "name",
+      minRating: Number(search.minRating) || 0,
+    };
+  },
 });
 
-// TODO: add Validation is Zod or Valibot
-
-interface SearchParams {
-  q: string;
-}
-
 function RouteComponent() {
-  const search: SearchParams = Route.useSearch();
+  const navigate = useNavigate({ from: "/products/search" });
+  const search = Route.useSearch();
 
   const { isPending, error, data } = useQuery({
-    queryKey: ["search-products", search.q],
-    queryFn: () => getProducts({ search: search.q }),
+    queryKey: ["search-products", search],
+    queryFn: () =>
+      getProducts({
+        search: search.q,
+        sortBy: search.sortBy,
+        minRating: search.minRating,
+      }),
     staleTime: 15 * 60 * 1000,
   });
+
+  const updateSearch = (updates: Partial<typeof search>) => {
+    navigate({
+      search: (prev) => ({ ...prev, ...updates }),
+    });
+  };
 
   return (
     <>
       <ProductSearch />
+
+      <ProductFilters
+        sortBy={search.sortBy}
+        minRating={search.minRating}
+        onSortChange={(sortBy) => updateSearch({ sortBy })}
+        onMinRatingChange={(minRating) => updateSearch({ minRating })}
+        onClearFilters={() => updateSearch({ minRating: 0 })}
+      />
+
       {isPending && <Spinner />}
       {error && <ErrorInfo message={error.message} />}
       {data?.length === 0 ? (

@@ -34,7 +34,15 @@ function RouteComponent() {
           </p>
           <Button
             type="button"
-            action={() => navigate({ to: "/products/all" })}
+            action={() =>
+              navigate({
+                to: "/products/all",
+                search: {
+                  sortBy: "name",
+                  minRating: 0,
+                },
+              })
+            }
             text="Back to Store"
           />
         </div>
@@ -185,7 +193,15 @@ function RouteComponent() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             type="button"
-            action={() => navigate({ to: "/products/all" })}
+            action={() =>
+              navigate({
+                to: "/products/all",
+                search: {
+                  sortBy: "name",
+                  minRating: 0,
+                },
+              })
+            }
             text="Continue Shopping"
             invert
           />

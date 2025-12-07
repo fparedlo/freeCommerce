@@ -1,5 +1,5 @@
 import { login } from "@/api/auth";
-import { Button } from "@/ui/components";
+import { Button, OrderHistoryList } from "@/ui/components";
 import { formatDate } from "@/utils/formatDate";
 import { createFileRoute, redirect, useNavigate } from "@tanstack/react-router";
 
@@ -70,6 +70,9 @@ function RouteComponent() {
         text="Logout"
         action={handleLogout}
       />
+
+      {/* Order History Section */}
+      <OrderHistoryList />
     </section>
   );
 }

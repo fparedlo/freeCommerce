@@ -88,7 +88,11 @@ function RouteComponent() {
               action={() =>
                 navigate({
                   to: "/products/search",
-                  search: { q: productData.brand },
+                  search: {
+                    q: productData.brand,
+                    sortBy: "name",
+                    minRating: 0,
+                  },
                 })
               }
             />

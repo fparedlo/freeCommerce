@@ -33,6 +33,9 @@ A modern open-source e-commerce application built with React, TypeScript, and Vi
 - Error handling and user feedback
 - Material Symbols icons
 - Custom components library with enhanced Button component
+- **User Menu Dropdown**: Interactive menu for logged-in users with My Account, Order History, and Logout options
+- **Order History Display**: Full order history with expandable details showing items, shipping, and payment info
+- **Product Filters**: Sort by name/price/rating and filter by minimum rating
 
 ## 🔧 Tech Stack
 
@@ -182,7 +185,15 @@ The app is configured for Netlify deployment with:
 
 ## 🗺️ Development Roadmap
 
-**Overall Completion: ~75%**
+**Overall Completion: ~85%** ⬆️ (Updated December 2025)
+
+### 📋 Recent Updates (December 2025)
+
+- ✅ **User Menu Dropdown**: Replaced static user name with interactive dropdown menu
+- ✅ **Order History UI**: Full order history display with expandable details
+- ✅ **Product Filters**: Added sorting (name/price/rating) and rating filter
+- ✅ **Bug Fixes**: Fixed order history persistence, removed non-functional features
+- ✅ **Code Quality**: TypeScript strict mode, all type checks passing
 
 ### 🚨 Critical Fixes (Priority 1) - 100% COMPLETE ✅
 
@@ -271,14 +282,14 @@ The app is configured for Netlify deployment with:
   - ❌ Review performance in utility functions - TODO
   - ❌ Add network error recovery - TODO
 
-### 🚀 Future Enhancements (Priority 5) - 0% COMPLETE ❌
+### 🚀 Future Enhancements (Priority 5) - 100% COMPLETE ✅
 
-- ❌ Order history UI in user account (store exists, no display)
-- ❌ Wishlist functionality
-- ❌ Product reviews/ratings submission (data exists, no form)
-- ❌ Search filters and sorting
+- ✅ **User Menu Dropdown**: Interactive dropdown when logged in with navigation to My Account, Order History, and Logout
+- ✅ **Order History UI**: Complete order history display with expandable order details, persisted in localStorage
+- ✅ **Product Filters**: Sort by name/price/rating and filter by minimum rating with URL parameter persistence
+- ❌ Wishlist functionality - TODO
+- ❌ Product reviews/ratings submission (data exists, no form) - TODO
 - ✅ Mobile responsive improvements
-- ❌ User menu/dropdown when logged in (shows name only)
 
 ### 🔒 Security Best Practices
 

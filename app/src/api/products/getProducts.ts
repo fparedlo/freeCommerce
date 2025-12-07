@@ -54,11 +54,16 @@ const ProductsResponseSchema = z.object({
   limit: z.number(),
 });
 
+export type SortOption = "price-asc" | "price-desc" | "rating" | "name";
+
 export type GetProductsParams = {
   limit?: number;
   skip?: number;
   category?: string;
   search?: string;
+  // Client-side filtering and sorting
+  sortBy?: SortOption;
+  minRating?: number;
 };
 
 export async function getProducts({
@@ -66,6 +71,8 @@ export async function getProducts({
   skip = 0,
   category,
   search,
+  sortBy,
+  minRating = 0,
 }: GetProductsParams = {}): Promise<Product[]> {
   try {
     const baseUrl = import.meta.env.VITE_API_URL || "https://dummyjson.com";
@@ -87,7 +94,32 @@ export async function getProducts({
     const data = await response.json();
 
     const parsedData = ProductsResponseSchema.parse(data);
-    return parsedData.products as Product[];
+    let products = parsedData.products as Product[];
+
+    // Apply client-side filters
+    if (minRating > 0) {
+      products = products.filter((p) => p.rating >= minRating);
+    }
+
+    // Apply sorting
+    if (sortBy) {
+      products = [...products].sort((a, b) => {
+        switch (sortBy) {
+          case "price-asc":
+            return a.price - b.price;
+          case "price-desc":
+            return b.price - a.price;
+          case "rating":
+            return b.rating - a.rating;
+          case "name":
+            return a.title.localeCompare(b.title);
+          default:
+            return 0;
+        }
+      });
+    }
+
+    return products;
   } catch (err) {
     const errorMessage =
       err instanceof Error ? err.message : "Unknown error occurred";

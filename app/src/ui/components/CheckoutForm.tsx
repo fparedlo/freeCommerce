@@ -33,7 +33,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
 }) => {
   const navigate = useNavigate();
   const { basket, totalCost, cleanBasket } = useBasketStore();
-  const { setCurrentOrder } = useOrderStore();
+  const { setCurrentOrder, completeOrder } = useOrderStore();
 
   const [step, setStep] = useState<"shipping" | "payment" | "review">(
     "shipping",
@@ -163,6 +163,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
     };
 
     setCurrentOrder(order);
+    completeOrder(); // Move order to orderHistory
     onComplete(order);
     cleanBasket();
 
@@ -178,7 +179,15 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <p className="text-xl text-gray-600 mb-4">Your cart is empty</p>
         <Button
           type="button"
-          action={() => navigate({ to: "/products/all" })}
+          action={() =>
+            navigate({
+              to: "/products/all",
+              search: {
+                sortBy: "name",
+                minRating: 0,
+              },
+            })
+          }
           text="Go Shopping"
         />
       </div>
