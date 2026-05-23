@@ -89,7 +89,7 @@ export interface FileRoutesByFullPath {
   '/products/$category': typeof ProductsCategoryRoute
   '/products/all': typeof ProductsAllRoute
   '/products/search': typeof ProductsSearchRoute
-  '/checkout': typeof CheckoutIndexRoute
+  '/checkout/': typeof CheckoutIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -131,7 +131,7 @@ export interface FileRouteTypes {
     | '/products/$category'
     | '/products/all'
     | '/products/search'
-    | '/checkout'
+    | '/checkout/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -200,7 +200,7 @@ declare module '@tanstack/react-router' {
     '/checkout/': {
       id: '/checkout/'
       path: '/checkout'
-      fullPath: '/checkout'
+      fullPath: '/checkout/'
       preLoaderRoute: typeof CheckoutIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

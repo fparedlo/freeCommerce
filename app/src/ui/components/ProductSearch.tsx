@@ -6,7 +6,7 @@ export function ProductSearch() {
 
   const searchTerm = useRef<HTMLInputElement>(null);
 
-  const handleSearch = (event: React.FormEvent) => {
+  const handleSearch = (event: React.SubmitEvent) => {
     event.preventDefault();
     const searchValue = searchTerm.current?.value.trim();
 
